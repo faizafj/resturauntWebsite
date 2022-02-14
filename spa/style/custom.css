@@ -1,0 +1,39 @@
+
+/* this is where you will define your stylesheet for non-touchscreen devices */
+
+body {
+	color:black;
+	font-family: Arial, sans-serif;
+	}
+
+.hidden {
+	display: none;
+}
+
+nav {
+	background-color:#EFCDBC;
+	display:flex;
+	text-align: right;
+}
+
+ul > li {
+	display: inline-block;
+	margin:20px; 
+}
+
+a{
+	padding: 20px;
+}
+a:hover {
+    background:green;
+}
+input{
+	border:indianred solid 3px;
+}
+
+
+#logo{
+	width: 100px;
+	height: 100px;
+	margin:0 ;
+}
