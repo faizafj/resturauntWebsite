@@ -6,9 +6,7 @@ export async function setup(node) {
 	try {
 		console.log(node)
 		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
-		document.querySelector('header p').innerText = 'Homepage'		
 		const token = localStorage.getItem('authorization')
-		//console.log(token)
 		if(token == null) loadPage('login')
 		await showAllOrders(node)
 	} catch(err) {

@@ -3,7 +3,7 @@
 
 body {
 	color:black;
-	font-family: Arial, sans-serif;
+	font-family: 'Trebuchet MS', sans-serif;
 	}
 
 .hidden {
@@ -11,8 +11,7 @@ body {
 }
 
 nav {
-	background-color:#2C895A;
-	// display:flex;
+	background-color: black;
 	text-align: left;
 	border-radius:20px;
 	padding: 5px;
@@ -28,16 +27,22 @@ ul > li {
 a{
 	padding: 5px;
 	text-decoration: None;
-	color: black;
+	color: white;
 }
 a:hover {
     background: #2C895A;
 	color: white; 
+	border-radius: 25px; 
 }
 
 a:active {
 	text-decoration: None;
+	background: #2C895A;
+	color: white; 
+	border-radius: 25px; 
 }
+
+
 input{
 	border: black solid 1px;
 	border-radius:25px;
@@ -152,14 +157,15 @@ button:hover {
 	text-decoration: None;
 	color: black;
 	border: solid black 2px;
+	border-radius: 0px;
 }
 
 #loginBtn{
-	    color: white;
-        background: black;
-        font: 10px;
-        margin-left: 10px;
-		border-radius: 10px;
+	color: white;
+    background: black;
+    font: 10px;
+    margin-left: 10px;
+	border-radius: 10px;
 }
 
 #signUpLink{
@@ -189,6 +195,7 @@ article{
 	border: none; 
 }
 
+
 #outerArticle{
 	padding: 10px;
 	display: grid;
@@ -203,8 +210,8 @@ article{
 #Side2{
 	width: auto;
 	height: 80em;
-
 }
+
 
 table{
 	border: solid black 1px;
@@ -216,10 +223,10 @@ td{
 	padding: 30px;
 }
 
-tr{
-	border-bottom: solid black 1px;
-}
 
+th{
+	padding:30px; 
+}
 
 #home {
 	margin: 10px;
@@ -242,5 +249,65 @@ tr{
 #Side2Home{
 	width: auto;
 	height: 80em;
+}
+#Side1 > button{
+	border: none;
+	height: 150px;
+	width: 200px;
+	font-size: 30px;
+	border-radius: 0px;
+	color: black;
+	background-color: grey;
+}
 
+#Side1 > button:hover{
+	border: none;
+	height: 150px;
+	width: 200px;
+	font-size: 30px;
+	border-radius: 0px;
+	color: white;
+}
+
+#Side1 > button >  p {
+	padding: 10px; 
+	margin: 10px; 
+	border: solid black 1px; 
+	font-size: 15px;
+	background-color: black;
+	color: white;
+}
+
+
+button > p{
+	color: white;
+	font-size: 15px;
+}
+
+
+
+#oneMenuItem {
+		height: auto;
+		padding: 0px; 
+		
+}
+#outerArticleItem{
+	padding: 10px;
+	display: grid;
+  	grid-template-columns: 5fr  2fr  ;
+	height: auto;
+}
+
+#Side1Item{
+	width: auto;
+	height: auto;
+}
+
+#Side2Item{
+	width: auto;
+	height: auto;
+}
+
+#price {
+	font-size: 20px;
 }

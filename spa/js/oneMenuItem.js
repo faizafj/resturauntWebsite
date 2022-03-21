@@ -6,7 +6,6 @@ export async function setup (node) {
 	console.log('menuItems: setup')
 	try {
 		console.log(node)
-		document.querySelector('header p').innerText = 'Menu Items'
 		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
 		if(localStorage.getItem('authorization') === null) loadPage('login')
 		const table = node.getElementById('menuItemsTable')
@@ -30,11 +29,27 @@ async function showMenuItems(node){
 		const json = await response.json()
 		console.log (json)	
 		node.querySelector('h2').innerText = json.data.attributes.itemName
+		node.getElementById('itemPhotoPlaceholder').src = json.data.attributes.itemPhoto
+		node.querySelector('p').innerText = json.data.attributes.category
+		node.getElementById('price').innerText = ("£") + json.data.attributes.itemPrice
+		
+		node.getElementById('submitQuantity').addEventListener("click", function() {
+			let quantity = document.getElementById('quantityInput').value
+			let currentOrder = JSON.parse(localStorage.getItem('items'))
+			let valid = false
+			for (const food of currentOrder){
+				if (food.itemName == json.data.attributes.itemName){
+					food.quantity += parseInt(quantity)
+					valid = true
+				}
+			}
+			console.log(currentOrder)
+			if (valid == false){
+				let item = { itemId: json.data.itemId, itemName: json.data.attributes.itemName, quantity: parseInt(quantity), price: json.data.attributes.itemPrice, tableNumber: localStorage.getItem('tableNumber')}
+				console.log(item)
+				currentOrder.push(item)
+			}
+			localStorage.setItem('items', JSON.stringify(currentOrder))
+		})
+
 }
-
-
-
-//sort by category?
-//need to show order and order total too
-// update with each item quantity
-//place into side

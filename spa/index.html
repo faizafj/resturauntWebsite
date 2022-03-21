@@ -94,6 +94,8 @@
 
 			<article id="Side2">
 				<h2> Side 2 </h2>
+				<p><button type="submitOrder">Place Order</button></p>
+				<button type="submit" id="cancelOrder"> Cancel Order </button>
 			</article>
 
 			</article>
@@ -101,9 +103,24 @@
 	</template>
 
 	<template id="oneMenuItem">
-		<center>
+
+			<center> 
+			<article id="outerArticleItem">
+			<article id="Side1Item">
+			<h2> Side 1 </h2>
 			<h2> </h2>
-		</center>
+			<img id="itemPhotoPlaceholder"/> 
+			</article>
+
+			<article id="Side2Item">
+				<h2> Side 2 </h2>
+				<p> </p>
+			<p id="price"> </p>
+			<p id= "titleForQuantity"> Quantity: <input type="number" id="quantityInput" default="0 " name="quantity" min="0" max="15" > </input>  </p>
+			<button type="submit" id="submitQuantity"> Submit </button>			
+			</article>
+			</article>
+			</center>
 	</template>
 
 	<template id="availableTables">

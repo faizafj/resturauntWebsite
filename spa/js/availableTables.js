@@ -4,7 +4,6 @@ export async function setup(node) {
 	console.log('availableTables: setup')
 	try {
 		console.log(node)
-		document.querySelector('header p').innerText = 'Available Tables'
 		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
 		if(localStorage.getItem('authorization') === null) loadPage('login') // if there is no token in localstorage - goto Login Page
 		await showAvailableTables(node)
@@ -29,9 +28,13 @@ async function showAvailableTables(node){
 		console.log(availableTable)
 		if(availableTable.attributes.tableStatus == "Available"){
 			let newButton = document.createElement("button")
-			newButton.innerText = ("Table ") + availableTable.tableNumber + (" Number of seats available: ") + availableTable.attributes.tableSeats
+			let seatsAvailable = document.createElement("p")
+			seatsAvailable.innerText = availableTable.attributes.tableSeats + (" seats")
+			newButton.innerText = ("Table ") + availableTable.tableNumber 
 			node.appendChild(newButton)
+			newButton.append(seatsAvailable)
 			newButton.addEventListener("click", function(){
+				
 			localStorage.setItem('tableNumber', availableTable.tableNumber)
 			console.log (availableTable.tableNumber)
             location = "/menuItems"; 

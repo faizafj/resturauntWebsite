@@ -48,9 +48,9 @@ INSERT INTO accounts(user, pass, userType) VALUES("doej", "$2b$10$gL33obKAFUT5DK
 INSERT INTO accounts(user, pass, userType) VALUES("faizafj", "$2a$10$y3Arlz52EeinaUOtRhBQ6OwFFO6K22OYfu9lVCw/nl16Smi5mPi.m", "waitress");
 INSERT INTO accounts(user, pass, userType) VALUES("user1", "$2a$10$O5CsucRQkubBzQU3rtJAR./ewhQ40fnzN5hs.91jUGgutkwo.f3Gy", "waiter");
 INSERT INTO accounts(user, pass, userType) VALUES("user2", "$2a$10$O5CsucRQkubBzQU3rtJAR./ewhQ40fnzN5hs.91jUGgutkwo.f3Gy", "chef");
-INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("1", "Nandos Meal", 4.00, "Item Description, yummy food!", "Starter", "nuts", "healthy meal!",  "mealOne.jpg");
-INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("2", "Mixed Platter", 16.00, "Mixed Platter with lots of food", "Platters", "N/A", "healthy meal!",  "mealTwo.jpg");
-INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("3", "Fish and Chips", 7.00, "Chips and Fish with Ketchup", "Main", "N/A", "healthy meal!",  "mealThree.jpg");
+INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("1", "Nandos Meal", 4.00, "Item Description, yummy food!", "Starter", "nuts", "healthy meal!",  "https://images.menu.nandos.dev/uk/sharing-platters/640x360/boneless-platter-50.Image-16-9.101913.jpg");
+INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("2", "Mixed Platter", 16.00, "Mixed Platter with lots of food", "Platters", "N/A", "healthy meal!",  "https://images.menu.nandos.dev/uk/sharing-platters/640x360/boneless-platter-50.Image-16-9.101913.jpg");
+INSERT INTO menuItems(itemId, itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto) VALUES ("3", "Fish and Chips", 7.00, "Chips and Fish with Ketchup", "Main", "N/A", "healthy meal!",  "https://images.menu.nandos.dev/uk/sharing-platters/640x360/boneless-platter-50.Image-16-9.101913.jpg");
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("1", "Available", "4");
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("2", "Vacant", "4");
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("3", "Vacant", "6");

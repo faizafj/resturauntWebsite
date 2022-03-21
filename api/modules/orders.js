@@ -27,3 +27,13 @@ export async function allOrders () {
 })
     return orders
 }
+
+
+export async function placeOrder (orderDetails) {
+    let sql = `INSERT INTO orders (orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES ("${orderDetails.orderStatus}","${orderDetails.orderTotal}","${orderDetails.tableNumber}", "${orderDetails.user}", "${orderDetails.timeOfOrder}", "${orderDetails.itemId}", "${orderDetails.quantity}", "${orderDetails.date}")`
+    console.log (sql)
+    await db.query(sql)
+    return true
+}
+
+

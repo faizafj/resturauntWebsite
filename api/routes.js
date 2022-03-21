@@ -201,6 +201,50 @@ router.get('/api/v1/orders', async context => {
 	}
 })
 
+router.post('/api/v1/orders', async context => {
+	console.log('POST /api/v1/orders')
+	const token = context.request.headers.get('Authorization')
+	console.log(`auth: ${token}`)
+	try {
+		const credentials = extractCredentials(token)
+		console.log(credentials)
+		const username = await login(credentials)
+		console.log(`username: ${username}`)
+		const data = await context.request.body ().value
+		const orders = await placeOrder(data)
+		const host = context.request.url.host
+		
+		context.response.body = JSON.stringify(
+			{
+				name: "orders",
+				description: "This API call is used to fetch all order details" ,
+					links:{
+						availableTables: `https://${host}/api/v1/availableTables`,
+						menuItems: `https://${host}/api/v1/menuItems`,
+					},
+					data: orders
+			}, null, 2)
+	} catch(err) {
+		context.response.status = 401
+		context.response.body = JSON.stringify(
+			
+			{
+				errors: [
+					{
+						title: '401 Unauthorized.',
+						detail: err.message
+					}
+				]
+			}
+		, null, 2)
+	}
+})
+
+
+
+
+
+
 router.get('/api/v1/availableTables', async context => {
 	console.log('GET /api/v1/availableTables')
 	const token = context.request.headers.get('Authorization')
