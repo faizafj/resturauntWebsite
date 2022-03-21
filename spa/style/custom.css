@@ -11,16 +11,18 @@ body {
 }
 
 nav {
-	background-color:#EFCDBC;
+	background-color:#2C895A;
 	// display:flex;
 	text-align: left;
+	border-radius:20px;
+	padding: 5px;
 }
 
 ul > li {
 	display: inline-block;
 	margin-left: 10px; 
 	margin-right:10px;
-	margin-bottom: 10px;
+	position: relative; 
 }
 
 a{
@@ -29,20 +31,216 @@ a{
 	color: black;
 }
 a:hover {
-    background:Pink;
-	color: rgb(207, 39, 67); 
+    background: #2C895A;
+	color: white; 
 }
 
 a:active {
 	text-decoration: None;
 }
 input{
-	border:indianred solid 3px;
+	border: black solid 1px;
+	border-radius:25px;
+	height: 30px; 
+	font-size: 20px;
+	padding: 1px;
 }
 
+#username{
+	font: 16px;
+    margin: 10px;
+    border-radius: 2px;
+    border: black 1px solid;
+    height: 50px;
+    width: 250px;
+    color: #2C895A;
+}
+
+#password{
+	font: 16px;
+    margin: 10px;
+    border-radius: 2px;
+    border: black 1px solid;
+    height: 50px;
+    width: 250px;
+    color: #2C895A;
+}
+#username:focus{
+	border: solid green 5px;
+}
+
+#password:focus{
+	border: solid green 5px;
+}
+
+label {
+	text-align: left;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+#login{
+	padding: 30px;
+}
 
 #logo{
 	width: 100px;
 	height: 100px;
 	margin:0 ;
+}
+
+
+button {
+	padding: 20px;
+	text-decoration: None;
+	background: #2C895A; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 100px; 
+	border-radius: 25px; 
+}
+
+button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+#tableBtn{
+	border: none; 
+	padding: 50px; 
+	margin: 10px; 
+	color: black;
+	background: #2C895A;  
+	border-radius: 25px; 
+	width: auto; 
+}
+
+#tableBtn:hover {
+	background: black;
+	color: white;
+}
+
+
+#availableTables > button{
+	text-decoration: None;
+	background: black; 
+	color: white;
+	font-size: 30px;
+	border: none;
+	border-radius: 25px;; 
+	width: 20%;
+	padding: 30px;
+
+}
+
+
+#availableTables > button:hover{
+	text-decoration: None;
+	background: #2C895A; 
+	color: white;
+	font-size: 30px;
+	border: none;
+	border-radius: 25px;; 
+	width: 20%;
+	padding: 30px;
+
+}
+#addOrderbtn{
+	padding: 10px;
+	font-size: 30px;
+	text-decoration: None;
+	color: black;
+	border: solid black 2px;
+}
+
+#loginBtn{
+	    color: white;
+        background: black;
+        font: 10px;
+        margin-left: 10px;
+		border-radius: 10px;
+}
+
+#signUpLink{
+	color: black; 
+	text-decoration: None;
+}
+
+#signUpLink:hover {
+	color:#2C895A; 
+	text-decoration: underline;
+	background: white;
+}
+
+
+article{
+	margin: 10px;
+	padding: 50px;
+	height: 100em;
+	border: solid black 3px; 
+}
+
+
+#menuItems {
+	margin: 10px;
+	padding: 0px;
+	height: 100em;
+	border: none; 
+}
+
+#outerArticle{
+	padding: 10px;
+	display: grid;
+  	grid-template-columns: 5fr  2fr  ;
+	height: 90em;
+}
+#Side1{
+	width: auto;
+	height: 80em;
+}
+
+#Side2{
+	width: auto;
+	height: 80em;
+
+}
+
+table{
+	border: solid black 1px;
+	margin: 30px;
+}
+
+td{
+	
+	padding: 30px;
+}
+
+tr{
+	border-bottom: solid black 1px;
+}
+
+
+#home {
+	margin: 10px;
+	padding: 0px;
+	height: 100em;
+	border: none; 
+}
+
+#outerArticle{
+	padding: 10px;
+	display: grid;
+  	grid-template-columns: 5fr  2fr  ;
+	height: 90em;
+}
+#Side1Home{
+	width: auto;
+	height: 80em;
+}
+
+#Side2Home{
+	width: auto;
+	height: 80em;
+
 }

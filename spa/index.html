@@ -1,66 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<HTML lang="en">
 	<head>
 		<meta charset="utf8" />
 		<meta name="viewport" content="width=device-width", initial-scale="1.0" />
-		<title>Blossoms Resturant</title>
+		<title>Resturant Ordering System</title>
 		<link rel="stylesheet" href="style/main.css">
 		<script type="module" src="./router.js" defer></script>
 	</head>
 	<body>
 		<aside class="hidden"><p></p></aside>
 		<header>
-			<center> <h1>Blossoms Resturant Ordering System</h1> </center>
+			<center> <h1>Resturant Ordering System</h1> </center>
 			<p>&nbsp;</p>
 		</header>
 		<nav>
 			<ul id="NavBar">
-				<img id= "logo" src="uploads/logo.png">
 				<li><a href="/">Home</a></li>
 				<li><a href="/register">Register</a></li>
-				<li><a href="/foo">Foo</a></li>
+				<li><a href="/availableTables">Add Order</a></li>
+				<li><a href="/menuItems">Menu Items</a></li>
+				<li><a href="/oneMenuItem">One Menu</a></li>
 				<li><a href="/login">Log in</a></li>
 				<li><a href="/logout">Log out</a></li>
 			</ul>
 		</nav>
 		<main>
 			<article>
+				
 			</article>
 		</main>
 		<footer>
 			<p>&nbsp;</p>
 		</footer>
 	</body>
+
 	<template id="home">
+		<center>
+			<article id="outerArticle">
+			<article id="Side1Home">
+				<h2> Current Orders </h2>
+				<table> 
+					<th> Table Number </th>
+					<th> Order status </th>
+					<th> Time Placed </th>
+					<th> Item </th>
+					<th> Quantity </th>
+				</table>
+			</article>
+
+			<article id="Side2Home">
+				<a href="/availableTables" id="addOrderbtn"/>Add Order</a>
+			</article>
+
+			</article>
+		</center>
 	</template>
+
 	<template id="login">
+		<center>
 		<form name="login">
-			<p><label for="email">Username</label><br /><input type="text" name="user" placeholder="Enter your username" /></p>
-			<p><label for="pass">Password</label><br /><input type="password" name="pass" placeholder="Enter your password" /></p>
-			<p><button type="submit">Log in</button></p>
+			<p><label for="username">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter your username" /></p>
+			<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password"placeholder="Enter your password" /></p>
+			<a href="/register" id="signUpLink"/>Don't have an account? Click to sign up instead.</a>
+			<p><button type="submit" id="submitBtn">Log in</button></p>
 		</form>
+		</center>
 	</template>
+
 	<template id="register">
+		<center>
 		<form name="register">
-			<p><label for="name">Username</label><br /><input type="text" name="user" placeholder="Enter username" /></p>
-			<p><label for="pass">Password</label><br /><input type="password" name="pass" placeholder="Enter Password" /></p>
-			<p><button type="submit">Create account</button></p>
+			<p><label for="name">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter username" /></p>
+			<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password" placeholder="Enter Password" /></p>
+			<a href="/login" id="signUpLink"/>Already have an account? Click to log-in instead.</a>
+			<p><button type="submit" id="submitBtn" >Create account</button></p>
 		</form>
+		</center>
 	</template>
+
 	<template id="logout">
-			<p>Do you want to log out?</p>
-			<p><button>OK</button><button>Cancel</button></p>
+		<center>
+			<h2>Do you want to log out?</h2>
+			<h2><button>OK</button><button>Cancel</button></h2>
+		</center>
 	</template>
-	<template id="foo">
-		<form name="upload" method="post">
-			<p><label for="pass">Choose a file</label><br /><input type="file" name="file" /></p>
-			<p><button type="submit">Upload</button></p>
-		</form>
+
+	<template id="menuItems">
+		<center> 
+			<article id="outerArticle">
+			<article id="Side1">
+			<h2> Side 1 </h2>
+			</article>
+
+			<article id="Side2">
+				<h2> Side 2 </h2>
+			</article>
+
+			</article>
+		</center>
 	</template>
-	<template id="quote">
-		<section>
-			<h2></h2>
-			<p></p>
-		</section>
+
+	<template id="oneMenuItem">
+		<center>
+			<h2> </h2>
+		</center>
 	</template>
-</html>
+
+	<template id="availableTables">
+		<center>
+			<h2> Available Tables </h2>	
+		</center>
+	</template>
+
+</HTML>

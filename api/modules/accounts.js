@@ -9,7 +9,7 @@ const salt = await genSalt(saltRounds)
 
 export async function login(credentials) {
 	const { user, pass } = credentials
-	let sql = `SELECT count(id) AS count FROM accounts WHERE user="${user}";`
+	let sql = `SELECT count(user) AS count FROM accounts WHERE user="${user}";`
 	let records = await db.query(sql)
 	if(!records[0].count) throw new Error(`username "${user}" not found`)
 	sql = `SELECT pass FROM accounts WHERE user = "${user}";`
