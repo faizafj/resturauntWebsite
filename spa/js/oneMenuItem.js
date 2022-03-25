@@ -45,11 +45,16 @@ async function showMenuItems(node){
 			}
 			console.log(currentOrder)
 			if (valid == false){
-				let item = { itemId: json.data.itemId, itemName: json.data.attributes.itemName, quantity: parseInt(quantity), price: json.data.attributes.itemPrice, tableNumber: localStorage.getItem('tableNumber')}
+				let item = { itemId: json.data.itemId, 
+				itemName: json.data.attributes.itemName, 
+				quantity: parseInt(quantity), 
+				price: json.data.attributes.itemPrice, 
+				tableNumber: localStorage.getItem('tableNumber')}
 				console.log(item)
 				currentOrder.push(item)
 			}
 			localStorage.setItem('items', JSON.stringify(currentOrder))
+			loadPage('menuItems')
 		})
 
 }

@@ -21,3 +21,11 @@ export async function allAvailableTables () {
 })
     return availableTables
 }
+
+
+export async function changeTableStatus (tableNumber) {
+        let sql = `UPDATE availableTables SET tableStatus = "Vacant" WHERE tableNumber = ${tableNumber}`
+        console.log (sql)
+        await db.query(sql)  
+    return true
+}

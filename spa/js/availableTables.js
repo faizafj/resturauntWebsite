@@ -3,7 +3,7 @@ import { customiseNavbar, file2DataURI, loadPage, secureGet, showMessage } from 
 export async function setup(node) {
 	console.log('availableTables: setup')
 	try {
-		console.log(node)
+		//console.log(node)
 		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
 		if(localStorage.getItem('authorization') === null) loadPage('login') // if there is no token in localstorage - goto Login Page
 		await showAvailableTables(node)
@@ -23,9 +23,9 @@ async function showAvailableTables(node){
 	}
 	const response = await fetch(url, options)
 	const json = await response.json()
-	console.log (json)
+	//console.log (json)
 	json.data.forEach(availableTable =>{
-		console.log(availableTable)
+		//console.log(availableTable)
 		if(availableTable.attributes.tableStatus == "Available"){
 			let newButton = document.createElement("button")
 			let seatsAvailable = document.createElement("p")
@@ -33,10 +33,20 @@ async function showAvailableTables(node){
 			newButton.innerText = ("Table ") + availableTable.tableNumber 
 			node.appendChild(newButton)
 			newButton.append(seatsAvailable)
-			newButton.addEventListener("click", function(){
-				
+			newButton.addEventListener("click", async function(){
 			localStorage.setItem('tableNumber', availableTable.tableNumber)
-			console.log (availableTable.tableNumber)
+			//console.log (availableTable.tableNumber)
+			const url = '/api/v1/availableTables/'+ availableTable.tableNumber
+			const options = {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/vnd.api+json',
+				'Authorization': localStorage.getItem('authorization')
+		}
+	}
+	const response = await fetch(url, options)
+	const json = await response.json()
+	//console.log (json)
             location = "/menuItems"; 
 			});
 

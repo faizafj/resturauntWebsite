@@ -10,11 +10,10 @@
 	<body>
 		<aside class="hidden"><p></p></aside>
 		<header>
-			<center> <h1>Resturant Ordering System</h1> </center>
-			<p>&nbsp;</p>
 		</header>
 		<nav>
 			<ul id="NavBar">
+				<img src="uploads/logo2.png" id="logo"> </img> 
 				<li><a href="/">Home</a></li>
 				<li><a href="/register">Register</a></li>
 				<li><a href="/availableTables">Add Order</a></li>
@@ -26,7 +25,6 @@
 		</nav>
 		<main>
 			<article>
-				
 			</article>
 		</main>
 		<footer>
@@ -36,90 +34,84 @@
 
 	<template id="home">
 		<center>
-			<article id="outerArticle">
-			<article id="Side1Home">
-				<h2> Current Orders </h2>
-				<table> 
-					<th> Table Number </th>
-					<th> Order status </th>
-					<th> Time Placed </th>
-					<th> Item </th>
-					<th> Quantity </th>
-				</table>
-			</article>
-
-			<article id="Side2Home">
-				<a href="/availableTables" id="addOrderbtn"/>Add Order</a>
-			</article>
-
-			</article>
+					<h2> Current Orders </h2>
+					<table> 
+						<th id="homeTable"> Table Number </th>
+						<th id="homeTable"> Order status </th>
+						<th id="homeTable"> Time Placed </th>
+						<th id="homeTable"> Item </th>
+						<th id="homeTable"> Quantity </th>
+						<th id="homeTable"> View Order </th>
+					</table>
+					<a href="/availableTables" id="addOrderbtn"/>Add Order</a>
 		</center>
 	</template>
 
 	<template id="login">
 		<center>
-		<form name="login">
-			<p><label for="username">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter your username" /></p>
-			<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password"placeholder="Enter your password" /></p>
-			<a href="/register" id="signUpLink"/>Don't have an account? Click to sign up instead.</a>
-			<p><button type="submit" id="submitBtn">Log in</button></p>
-		</form>
+			<form name="login">
+				<p><label for="username">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter your username" /></p>
+				<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password"placeholder="Enter your password" /></p>
+				<a href="/register" id="signUpLink"/>Don't have an account? Click to sign up instead.</a>
+				<p><button type="submit" id="submitBtn">Log in</button></p>
+			</form>
 		</center>
 	</template>
 
 	<template id="register">
 		<center>
-		<form name="register">
-			<p><label for="name">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter username" /></p>
-			<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password" placeholder="Enter Password" /></p>
-			<a href="/login" id="signUpLink"/>Already have an account? Click to log-in instead.</a>
-			<p><button type="submit" id="submitBtn" >Create account</button></p>
-		</form>
+			<form name="register">
+				<p><label for="name">Username</label><br /><input type="text" name="user" id="username" placeholder="Enter username" /></p>
+				<p><label for="pass">Password</label><br /><input type="password" name="pass" id="password" placeholder="Enter Password" /></p>
+				<a href="/login" id="signUpLink"/>Already have an account? Click to log-in instead.</a>
+				<p><button type="submit" id="submitBtn" >Create account</button></p>
+			</form>
 		</center>
 	</template>
 
 	<template id="logout">
 		<center>
 			<h2>Do you want to log out?</h2>
-			<h2><button>OK</button><button>Cancel</button></h2>
+			<h2><button id="okButton">OK</button><button>Cancel</button></h2>
 		</center>
 	</template>
 
 	<template id="menuItems">
-		<center> 
 			<article id="outerArticle">
-			<article id="Side1">
-			<h2> Side 1 </h2>
+				<center>
+					<article id="Side1">
+					</article>
+				</center>
+				<article id="Side2">
+					<center>
+						<p id="noOrders"> </p>
+						<table id="orderTable">
+							<th> Item </th>
+							<th> Price </th>
+						</table>
+						<h2 id="totalOrderPrice"> </h2>
+						<button type="submit" id="submitOrder">Place Order</button>
+						<button type="submit" id="cancelOrder"> Cancel Order </button>
+					</center>
+				</article>
 			</article>
-
-			<article id="Side2">
-				<h2> Side 2 </h2>
-				<p><button type="submitOrder">Place Order</button></p>
-				<button type="submit" id="cancelOrder"> Cancel Order </button>
-			</article>
-
-			</article>
-		</center>
 	</template>
 
 	<template id="oneMenuItem">
-
 			<center> 
-			<article id="outerArticleItem">
-			<article id="Side1Item">
-			<h2> Side 1 </h2>
-			<h2> </h2>
-			<img id="itemPhotoPlaceholder"/> 
-			</article>
+				<article id="outerArticleItem">
+					<article id="Side1Item">
+						<h2> </h2>
+						<img id="itemPhotoPlaceholder"/> 
+					</article>
 
-			<article id="Side2Item">
-				<h2> Side 2 </h2>
-				<p> </p>
-			<p id="price"> </p>
-			<p id= "titleForQuantity"> Quantity: <input type="number" id="quantityInput" default="0 " name="quantity" min="0" max="15" > </input>  </p>
-			<button type="submit" id="submitQuantity"> Submit </button>			
-			</article>
-			</article>
+					<article id="Side2Item">
+						<p> </p>
+						<p id="price"> </p>
+						<p id= "titleForQuantity"> Quantity: <input type="number" id="quantityInput" value="0" name="quantity" min="0" max="15" > </input>  </p>
+						<button type="submit" id="submitQuantity"> Submit </button>			
+					</article>
+				</article>
 			</center>
 	</template>
 

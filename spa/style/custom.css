@@ -4,24 +4,37 @@
 body {
 	color:black;
 	font-family: 'Trebuchet MS', sans-serif;
+	margin: 0px;
 	}
 
 .hidden {
 	display: none;
 }
 
+
 nav {
-	background-color: black;
-	text-align: left;
-	border-radius:20px;
-	padding: 5px;
+    background-color: black;
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 20px;
 }
 
 ul > li {
-	display: inline-block;
-	margin-left: 10px; 
-	margin-right:10px;
-	position: relative; 
+    display: inline-block;
+    margin: 30px; 
+
+}
+
+#logo{
+	width: 50px;
+	height: 50px;
+	margin-left: 20%;
 }
 
 a{
@@ -30,14 +43,14 @@ a{
 	color: white;
 }
 a:hover {
-    background: #2C895A;
+    background: #7fb99c;
 	color: white; 
 	border-radius: 25px; 
 }
 
 a:active {
 	text-decoration: None;
-	background: #2C895A;
+	background: #7fb99c;
 	color: white; 
 	border-radius: 25px; 
 }
@@ -58,7 +71,7 @@ input{
     border: black 1px solid;
     height: 50px;
     width: 250px;
-    color: #2C895A;
+    color: #7fb99c;
 }
 
 #password{
@@ -68,14 +81,14 @@ input{
     border: black 1px solid;
     height: 50px;
     width: 250px;
-    color: #2C895A;
+    color: #7fb99c;
 }
 #username:focus{
-	border: solid green 5px;
+	border: solid #7fb99c 5px;
 }
 
 #password:focus{
-	border: solid green 5px;
+	border: solid #7fb99c 5px;
 }
 
 label {
@@ -87,17 +100,11 @@ label {
 	padding: 30px;
 }
 
-#logo{
-	width: 100px;
-	height: 100px;
-	margin:0 ;
-}
-
 
 button {
 	padding: 20px;
 	text-decoration: None;
-	background: #2C895A; 
+	background: #7fb99c; 
 	color: black;
 	border: none;
 	margin: 10px; 
@@ -116,7 +123,7 @@ button:hover {
 	padding: 50px; 
 	margin: 10px; 
 	color: black;
-	background: #2C895A;  
+	background: #7fb99c;  
 	border-radius: 25px; 
 	width: auto; 
 }
@@ -126,25 +133,25 @@ button:hover {
 	color: white;
 }
 
-
 #availableTables > button{
 	text-decoration: None;
+	text-align: center;
 	background: black; 
 	color: white;
-	font-size: 30px;
+	font-size: 2vw;
 	border: none;
+	white-space: nowrap;
 	border-radius: 25px;; 
 	width: 20%;
 	padding: 30px;
-
 }
 
 
 #availableTables > button:hover{
 	text-decoration: None;
-	background: #2C895A; 
+	background: #7fb99c; 
 	color: white;
-	font-size: 30px;
+	font-size: 2vw;
 	border: none;
 	border-radius: 25px;; 
 	width: 20%;
@@ -152,12 +159,17 @@ button:hover {
 
 }
 #addOrderbtn{
-	padding: 10px;
+	padding: 5px;
 	font-size: 30px;
+	white-space: nowrap;
 	text-decoration: None;
 	color: black;
 	border: solid black 2px;
 	border-radius: 0px;
+	position:fixed; 
+	bottom: 10px;
+	right: 10px;
+
 }
 
 #loginBtn{
@@ -179,53 +191,68 @@ button:hover {
 	background: white;
 }
 
-
 article{
-	margin: 10px;
+	margin-left: 0;
 	padding: 50px;
 	height: 100em;
 	border: solid black 3px; 
 }
 
+#availableTables {
+	margin-left: 15%;
+	padding: 50px;
+	height: auto;
+	border: none; 
+}
 
 #menuItems {
-	margin: 10px;
-	padding: 0px;
+	margin: 0;
+	padding:10px; 
 	height: 100em;
 	border: none; 
 }
 
-
+#oneMenuItem {
+	height: auto;
+	padding: 0px; 
+	margin-left: 15%;
+		
+}
 #outerArticle{
 	padding: 10px;
+	margin-left: 15%;
 	display: grid;
-  	grid-template-columns: 5fr  2fr  ;
-	height: 90em;
+  	grid-template-columns: 5fr  2fr;
+	height: auto;
+	border: solid black 1px;
 }
 #Side1{
 	width: auto;
-	height: 80em;
+	height: auto;
+	padding: 5px;
+	border: solid black 1px;
 }
 
 #Side2{
 	width: auto;
-	height: 80em;
+	height: auto;
+	padding: 0px; 
+	margin-left: 10px; 
+	border-radius: 20px;
 }
 
+#totalOrderPrice{
+	text-align: center;
+}
 
-table{
+#homeTable{
+	padding: 10px; 
+	margin: 20px;
 	border: solid black 1px;
-	margin: 30px;
-}
-
-td{
-	
-	padding: 30px;
-}
-
-
-th{
-	padding:30px; 
+	font-size: 15px;
+    text-decoration: none;
+    background: #7fb99c;
+	color: black;
 }
 
 #home {
@@ -241,18 +268,10 @@ th{
   	grid-template-columns: 5fr  2fr  ;
 	height: 90em;
 }
-#Side1Home{
-	width: auto;
-	height: 80em;
-}
 
-#Side2Home{
-	width: auto;
-	height: 80em;
-}
 #Side1 > button{
 	border: none;
-	height: 150px;
+	height: 250px;
 	width: 200px;
 	font-size: 30px;
 	border-radius: 0px;
@@ -262,35 +281,28 @@ th{
 
 #Side1 > button:hover{
 	border: none;
-	height: 150px;
-	width: 200px;
-	font-size: 30px;
 	border-radius: 0px;
-	color: white;
+	color: black;
 }
 
 #Side1 > button >  p {
 	padding: 10px; 
 	margin: 10px; 
-	border: solid black 1px; 
+	border: none;
 	font-size: 15px;
 	background-color: black;
 	color: white;
 }
 
 
-button > p{
-	color: white;
-	font-size: 15px;
+#Side1 > button:hover >  p {
+	border: none;
+	background-color: #7fb99c;
+	color: black;
 }
 
 
 
-#oneMenuItem {
-		height: auto;
-		padding: 0px; 
-		
-}
 #outerArticleItem{
 	padding: 10px;
 	display: grid;
@@ -306,8 +318,38 @@ button > p{
 #Side2Item{
 	width: auto;
 	height: auto;
+	position: -webkit-sticky;
+ 	position: sticky;
+  	top: 0;
 }
 
 #price {
 	font-size: 20px;
+}
+
+#itemPhotoPlaceholder{
+	width:90%;
+}
+
+#homeTable{
+	padding: 10px; 
+	margin: 20px;
+	border: solid black 1px;
+	font-size: 15px;
+    text-decoration: none;
+    background: #7fb99c;
+	color: black;
+}
+table{
+	border-collapse: collapse;
+	margin: 30px;
+	text-align: center;
+	border-bottom: solid black 1px;
+	border-left: solid black 1px;
+	border-right: solid black 1px;
+}
+
+td{
+	padding: 10px;
+	border-bottom: solid black 1px;
 }
