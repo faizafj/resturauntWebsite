@@ -34,27 +34,20 @@ async function showAvailableTables(node){
 			node.appendChild(newButton)
 			newButton.append(seatsAvailable)
 			newButton.addEventListener("click", async function(){
-			localStorage.setItem('tableNumber', availableTable.tableNumber)
-			//console.log (availableTable.tableNumber)
-			const url = '/api/v1/availableTables/'+ availableTable.tableNumber
-			const options = {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/vnd.api+json',
-				'Authorization': localStorage.getItem('authorization')
+				localStorage.setItem('tableNumber', availableTable.tableNumber)
+				const url = '/api/v1/availableTables/'+ availableTable.tableNumber
+				const options = {
+					method: 'PUT',
+					headers: {
+					'Content-Type': 'application/vnd.api+json',
+					'Authorization': localStorage.getItem('authorization')
+					}
+				}
+				const response = await fetch(url, options)
+				const json = await response.json()
+				location = "/menuItems"; 
+				});
 		}
-	}
-	const response = await fetch(url, options)
-	const json = await response.json()
-	//console.log (json)
-            location = "/menuItems"; 
-			});
 
-		}
-		
 	})
 }
-
-
-//need to set status to vacant!
-//fix navBar not showing addOrders

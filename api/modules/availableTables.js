@@ -29,3 +29,4 @@ export async function changeTableStatus (tableNumber) {
         await db.query(sql)  
     return true
 }
+
