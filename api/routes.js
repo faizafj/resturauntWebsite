@@ -4,7 +4,7 @@ import { extractCredentials, saveFile } from './modules/util.js'
 import { login, register } from './modules/accounts.js'
 import { allOrders, placeOrder } from './modules/orders.js'
 import { allMenuItems, oneMenuItem } from './modules/menuItems.js'
-import { allAvailableTables, changeTableStatus, availableTableStatus } from './modules/availableTables.js'
+import { allAvailableTables, changeTableStatus } from './modules/availableTables.js'
 
 const router = new Router()
 
