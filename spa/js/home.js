@@ -1,33 +1,54 @@
-
 /* home.js */
-
-import { customiseNavbar } from '../util.js'
+import { customiseNavbar, loadPage } from '../util.js'
 
 export async function setup(node) {
 	console.log('HOME: setup')
 	try {
 		console.log(node)
-		document.querySelector('header p').innerText = 'Homepage'
-		customiseNavbar(['home', 'foo', 'logout']) // navbar if logged in
+		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
 		const token = localStorage.getItem('authorization')
-		console.log(token)
-		if(token === null) customiseNavbar(['home', 'register', 'login']) //navbar if logged out
-		// add content to the page
-		await addContent(node)
+		if(token == null) loadPage('login')
+		await showAllOrders(node)
 	} catch(err) {
 		console.error(err)
 	}
 }
-
-// this example loads the data from a JSON file stored in the uploads directory
-async function addContent(node) {
-	const response = await fetch('/uploads/quotes.json')
-	const quotes = await response.json()
-	const template = document.querySelector('template#quote')
-	for(const quote of quotes.data) {
-		const fragment = template.content.cloneNode(true)
-		fragment.querySelector('h2').innerText = quote.author
-		fragment.querySelector('p').innerText = quote.quote
-		node.appendChild(fragment)
+async function showAllOrders(node){
+	const url = '/api/v1/orders'
+	const options = {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/vnd.api+json',
+			'Authorization': localStorage.getItem('authorization')
+		}
 	}
+	const response = await fetch(url, options)
+	const json = await response.json()
+	//console.log (json)
+	json.data.forEach(order =>{
+		//console.log(order)
+		if (order.attributes.orderStatus == ("Placed")|| order.attributes.orderStatus == ("Ready")){
+			let newRow = document.createElement("tr")
+			let orderTotalData = document.createElement("td")
+			let orderStatusData = document.createElement("td")
+			let orderTimeData = document.createElement("td")
+			let orderItemData = document.createElement("td")
+			let orderQuantityData = document.createElement("td")
+			let orderButton = document.createElement("button")
+			orderTotalData.innerText = ("Table ") + order.attributes.tableNumber
+			orderStatusData.innerText = order.attributes.orderStatus
+			orderTimeData.innerText = order.attributes.timeOfOrder
+			orderItemData.innerText = order.attributes.itemId
+			orderButton.innerText = ("View order")
+			orderQuantityData.innerText = order.attributes.quantity
+			newRow.appendChild(orderTotalData)
+			newRow.appendChild(orderStatusData)
+			newRow.appendChild(orderTimeData)
+			newRow.appendChild(orderItemData)
+			newRow.appendChild(orderQuantityData)
+			newRow.appendChild (orderButton)
+        	node.querySelector("table").appendChild(newRow)
+		}
+	})
 }
+
