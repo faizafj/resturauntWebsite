@@ -13,8 +13,9 @@
 		</header>
 		<nav>
 			<ul id="NavBar">
-				<img src="uploads/logo2.png" id="logo"> </img> 
+				<img src="uploads/logo2.png" id="logo" > </img> 
 				<li><a href="/">Home</a></li>
+				<li> <a href="/orderDetails">orderDetails</a></li>
 				<li><a href="/register">Register</a></li>
 				<li><a href="/availableTables">Add Order</a></li>
 				<li><a href="/menuItems">Menu Items</a></li>
@@ -39,11 +40,18 @@
 						<th id="homeTable"> Table Number </th>
 						<th id="homeTable"> Order status </th>
 						<th id="homeTable"> Time Placed </th>
-						<th id="homeTable"> Item </th>
-						<th id="homeTable"> Quantity </th>
+						<th id="homeTable"> Number Of Places </th>
 						<th id="homeTable"> View Order </th>
+						
 					</table>
 					<a href="/availableTables" id="addOrderbtn"/>Add Order</a>
+		</center>
+	</template>
+
+
+	<template id="orderDetails">
+		<center>
+					<h2> Orders Details </h2>
 		</center>
 	</template>
 
@@ -84,12 +92,16 @@
 				</center>
 				<article id="Side2">
 					<center>
+						<h3 id="tableNumberDetails">  </h3>
+						<h3 id="waitStaffDetails">  </h3>
 						<p id="noOrders"> </p>
 						<table id="orderTable">
 							<th> Item </th>
 							<th> Price </th>
 						</table>
 						<h2 id="totalOrderPrice"> </h2>
+						<input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="0" max="15" > </input>
+						<button type="submit" id="submitNumberOfPlaces"> Submit </button>	
 						<button type="submit" id="submitOrder">Place Order</button>
 						<button type="submit" id="cancelOrder"> Cancel Order </button>
 					</center>
@@ -117,7 +129,12 @@
 
 	<template id="availableTables">
 		<center>
-			<h2> Available Tables </h2>	
+			<article id="availableSide">
+				<h2> Available Tables: </h2>
+			</article>
+			<article id="vacantSide">
+				<h2> Tables in Use: </h2>
+			</article>
 		</center>
 	</template>
 

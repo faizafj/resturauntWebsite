@@ -39,6 +39,7 @@ CREATE TABLE `orders` (
   `itemId` int,
   `quantity` int NOT NULL,
   `date` VARCHAR (255), 
+  `numberOfPlaces` VARCHAR (255),
   FOREIGN KEY (tableNumber) REFERENCES availableTables(tableNumber),
   FOREIGN KEY (user) REFERENCES accounts(user),
   FOREIGN KEY (itemId) REFERENCES menuItems(itemId)
@@ -61,7 +62,7 @@ INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("7", "
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("8", "Available", "4");
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("9", "Vacant", "2");
 INSERT INTO availableTables(tableNumber, tableStatus, tableSeats) VALUES ("10", "Vacant", "6");
-INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES("1", "Done", 8.00, "3", "faizafj", "12:08", "1", "2", "12/03/22");
-INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES("2", "Placed", 16.00, "5", "user1", "12:30", "2", "1", "12/03/22");
-INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES("3", "Placed", 7.00, "5", "user1", "12:30", "3", "1", "12/03/22");
-INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES("4", "Ready", 7.00, "9", "user1", "12:36", "3", "1", "12/03/22")
+INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date, numberOfPlaces) VALUES("1", "Done", 8.00, "3", "faizafj", "12:08", "1", "2", "12/03/22", "1");
+INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date, numberOfPlaces) VALUES("2", "Placed", 16.00, "5", "user1", "12:30", "2", "1", "12/03/22", "2");
+INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date, numberOfPlaces) VALUES("3", "Placed", 7.00, "5", "user1", "12:30", "3", "1", "12/03/22", "2");
+INSERT INTO orders(orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date, numberOfPlaces) VALUES("4", "Ready", 7.00, "9", "user1", "12:36", "3", "1", "12/03/22", "1")

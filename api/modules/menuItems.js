@@ -18,7 +18,6 @@ export async function allMenuItems () {
                 allergies: record.allergies,
                 nutritionalInfo: record.nutritionalInfo,
                 itemPhoto: record.itemPhoto,
-
         }
 
     }
