@@ -31,9 +31,27 @@ async function showOrderDetails(node){
 		let orderDetails = json.data.attributes.items
 		console.log (orderDetails)
 		orderDetails.forEach(order => {
+			let figureCreate = document.createElement ("figure")
 			let itemIdDetails = document.createElement("h2")
-			itemIdDetails.innerText = order.attributes.itemName + (" x ") + order.attributes.quantity
-			node.appendChild(itemIdDetails)
+			let itemDescriptionDetails = document.createElement("p")
+			itemIdDetails.innerText = order.attributes.itemName + (" x ") + order.attributes.quantity + " @ " + order.attributes.itemPrice
+			itemDescriptionDetails.innerText = order.attributes.itemDescription
+			figureCreate.appendChild(itemIdDetails)
+			figureCreate.appendChild (itemDescriptionDetails)
+			node.appendChild(figureCreate)
         })
+			let overallPrice = document.createElement("h2")
+			overallPrice.innerText = "Order Total: £" +  json.data.attributes.orderTotal
+			let orderStatusDetails = document.createElement("h2")
+			orderStatusDetails.innerText = "Current Status: " + json.data.attributes.orderStatus
+			if (json.data.attributes.orderStatus == ("Placed")){
+					orderStatusDetails.style.color = "orange"
+			}
+			if (json.data.attributes.orderStatus == ("Ready")){
+					orderStatusDetails.style.color = "Green"
+			}
+			node.appendChild(overallPrice)
+			node.appendChild(orderStatusDetails)
+
 
     }		

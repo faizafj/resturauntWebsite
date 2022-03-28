@@ -93,6 +93,7 @@ label {
 	padding: 30px;
 }
 
+
 button {
 	padding: 20px;
 	text-decoration: None;
@@ -155,18 +156,26 @@ button:hover {
 	font-size: 15px; 
 }
 #addOrderbtn{
-	padding: 5px;
-	font-size: 30px;
-	white-space: nowrap;
+	font-size: 75px;
 	text-decoration: None;
-	background: white;
-	color: black;
-	border: solid black 2px;
+	color:  #7fb99c;
+	border: 0;
 	border-radius: 0px;
 	position:fixed; 
-	top: 30px;
+	bottom: 30px;
 	right: 30px;
+}
 
+#addOrderbtn:hover{
+	font-size: 75px;
+	text-decoration: None;
+	color: black;
+	border: 0;
+	background: 0; 
+	border-radius: 0px;
+	position:fixed; 
+	bottom: 30px;
+	right: 30px;
 }
 
 #loginBtn{
@@ -265,6 +274,27 @@ article{
 	color: black;
 }
 
+tr > button {
+	padding: 20px;
+	text-decoration: None;
+	background: #7fb99c; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 100px; 
+	border-radius: 15px; 
+
+}
+
+tr > button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+figure{
+	border: solid 1px black; 
+}
 #home {
 	margin: 10px;
 	padding: 0px;
@@ -360,21 +390,4 @@ table{
 td{
 	padding: 10px;
 	border-bottom: solid black 1px;
-}
-
-tr > button {
-	padding: 10px;
-	text-decoration: None;
-	background: #7fb99c; 
-	color: black;
-	border: none;
-	margin: 10px; 
-	width: 100px; 
-	border-radius: 25px; 
-}
-
-tr > button:hover {
-	background: black; 
-	color: white;
-	border: none; 
 }
