@@ -2,9 +2,9 @@
 import { Router } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { extractCredentials, saveFile } from './modules/util.js'
 import { login, register } from './modules/accounts.js'
-import { allOrders, placeOrder } from './modules/orders.js'
+import { allOrders, placeOrder, getOrderDetails } from './modules/orders.js'
 import { allMenuItems, oneMenuItem } from './modules/menuItems.js'
-import { allAvailableTables, changeTableStatus, availableTableStatus } from './modules/availableTables.js'
+import { allAvailableTables, changeTableStatus } from './modules/availableTables.js'
 
 const router = new Router()
 
@@ -158,6 +158,7 @@ router.get('/api/v1/orders', async context => {
 		const username = await login(credentials)
 		console.log(`username: ${username}`)
 		const orders = await allOrders()
+		
 		const host = context.request.url.host
 		orders.forEach(order => {
 			order.url = `https://${host}/api/v1/orders/${order.orderId}`
@@ -201,6 +202,9 @@ router.get('/api/v1/orders', async context => {
 	}
 })
 
+
+
+
 router.post('/api/v1/orders', async context => {
 	console.log('POST /api/v1/orders')
 	const token = context.request.headers.get('Authorization')
@@ -242,6 +246,53 @@ router.post('/api/v1/orders', async context => {
 })
 
 
+router.get('/api/v2/orderDetails/:id', async context => {
+	console.log('GET /api/v2/orderDetails/:id')
+	const token = context.request.headers.get('Authorization')
+	console.log(`auth: ${token}`)
+	try {
+		const credentials = extractCredentials(token)
+		console.log(credentials)
+		const username = await login(credentials)
+		console.log(`username: ${username}`)
+		const orderDetails = await getOrderDetails (context.params.id)
+		const host = context.request.url.host
+		context.response.body = JSON.stringify(
+			{
+				name: "orderDetails",
+				description: "This API call is used to fetch a single Order details" ,
+				schema: {
+					type: "string",
+					attributes:
+					{
+					orderStatus: "string",
+					orderTotal: "integer",
+					tableNumber: "integer",
+					user: "string",
+					timeOfOrder: "string",
+					itemId: "integer",
+					quantity: "integer",
+					date: "string",
+					itemName: "string",
+					numberOfPlaces: "string"
+					}},
+				data: orderDetails
+			}, null, 2)
+	} catch(err) {
+		context.response.status = 401
+		context.response.body = JSON.stringify(
+			
+			{
+				errors: [
+					{
+						title: '401 Unauthorized.',
+						detail: err.message
+					}
+				]
+			}
+		, null, 2)
+	}
+})
 
 
 router.put('/api/v1/availableTables/:id', async context => {

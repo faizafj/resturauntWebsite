@@ -25,28 +25,53 @@ async function showAllOrders(node){
 	const response = await fetch(url, options)
 	const json = await response.json()
 	//console.log (json)
+	
 	json.data.forEach(order =>{
-		//console.log(order)
-		if (order.attributes.orderStatus == ("Placed")|| order.attributes.orderStatus == ("Ready")){
+		console.log(order)
+		if (order.attributes.orderStatus == ("Placed")){
 			let newRow = document.createElement("tr")
-			let orderTotalData = document.createElement("td")
+			let orderTableData = document.createElement("td")
 			let orderStatusData = document.createElement("td")
 			let orderTimeData = document.createElement("td")
-			let orderItemData = document.createElement("td")
-			let orderQuantityData = document.createElement("td")
-			let orderButton = document.createElement("button")
-			orderTotalData.innerText = ("Table ") + order.attributes.tableNumber
+			let orderNumberOfPlacesData = document.createElement("td")
+			let orderButton = document.createElement("button")			
+			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
 			orderStatusData.innerText = order.attributes.orderStatus
 			orderTimeData.innerText = order.attributes.timeOfOrder
-			orderItemData.innerText = order.attributes.itemId
+			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces
 			orderButton.innerText = ("View order")
-			orderQuantityData.innerText = order.attributes.quantity
-			newRow.appendChild(orderTotalData)
+			orderStatusData.style.background = "orange"
+			orderButton.addEventListener("click", function(){
+				window.location = '/orderDetails#'+ order.orderId	
+			})
+			newRow.appendChild(orderTableData)
 			newRow.appendChild(orderStatusData)
 			newRow.appendChild(orderTimeData)
-			newRow.appendChild(orderItemData)
-			newRow.appendChild(orderQuantityData)
-			newRow.appendChild (orderButton)
+			newRow.appendChild(orderNumberOfPlacesData)
+			newRow.appendChild(orderButton)
+        	node.querySelector("table").appendChild(newRow)
+		}
+		if ( order.attributes.orderStatus == ("Ready")){
+let newRow = document.createElement("tr")
+			let orderTableData = document.createElement("td")
+			let orderStatusData = document.createElement("td")
+			let orderTimeData = document.createElement("td")
+			let orderNumberOfPlacesData = document.createElement("td")
+			let orderButton = document.createElement("button")			
+			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
+			orderStatusData.innerText = order.attributes.orderStatus
+			orderTimeData.innerText = order.attributes.timeOfOrder
+			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces
+			orderButton.innerText = ("View order")
+			orderStatusData.style.background = "green"
+			orderButton.addEventListener("click", function(){
+				window.location = '/orderDetails#'+ order.orderId	
+			})
+			newRow.appendChild(orderTableData)
+			newRow.appendChild(orderStatusData)
+			newRow.appendChild(orderTimeData)
+			newRow.appendChild(orderNumberOfPlacesData)
+			newRow.appendChild(orderButton)
         	node.querySelector("table").appendChild(newRow)
 		}
 	})

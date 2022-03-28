@@ -48,6 +48,22 @@ async function showMenuItems(node){ //API call to show all menu items
 
 
 async function showCurrentOrder (node){ //show current order details
+	let showTableNumber = JSON.parse(localStorage.getItem('tableNumber')) //local storage
+	let tableDetails = node.getElementById ("tableNumberDetails") 
+	tableDetails.innerText = ("Table Number ") + (showTableNumber)
+	let waitStaff = localStorage.getItem('username')
+	let waitStaffDetails = node.getElementById ("waitStaffDetails") 
+	waitStaffDetails.innerText = (waitStaff)
+	console.log(showTableNumber)
+
+
+	node.getElementById('submitNumberOfPlaces').addEventListener("click", function() {
+		let setNumberOfPlaces = document.getElementById('numberOfPlaces').value
+		localStorage.setItem('numberOfPlaces', JSON.parse(setNumberOfPlaces))
+		})
+
+
+
 	let currentOrder = JSON.parse(localStorage.getItem('items')) //get all data from local storage 
 	let total = 0 //total price set to 0
 	let orderLength = currentOrder.length
@@ -61,6 +77,7 @@ async function showCurrentOrder (node){ //show current order details
 		let newRow = document.createElement("tr")
 		let itemNameData = document.createElement("td") 
 		let itemPriceData = document.createElement("td")
+		let tableNumberDetail = document.createElement("td") 
 		itemNameData.innerText = menuItem.itemName + (" x ") + menuItem.quantity
 		itemPriceData.innerText = ("£") + menuItem.price
 		newRow.appendChild(itemNameData)
@@ -90,6 +107,7 @@ async function showCurrentOrder (node){ //show current order details
 		let getDate = localStorage.getItem('DateOfOrder')
 		let getTime = localStorage.getItem('Time')
 		let getTable = localStorage.getItem('tableNumber')
+		let getNumberOfPlaces = localStorage.getItem('numberOfPlaces')
 		const url = '/api/v1/orders'
 		const options = {
 		method: 'POST',
@@ -104,13 +122,15 @@ async function showCurrentOrder (node){ //show current order details
 				items: getItems,
 				time: getTime,
 				date: getDate,
-				tableNumber: getTable
+				tableNumber: getTable,
+				numberOfPlaces: getNumberOfPlaces
 			}
 		})
 		}
 		const response = await fetch(url, options)
 		const json = await response.json()
 		console.log(json)
+		await loadPage('home')
 	})
 }
 

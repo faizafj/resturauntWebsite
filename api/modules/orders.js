@@ -2,12 +2,15 @@
 import { db } from './db.js'
 
 export async function allOrders () {
-    let sql = `SELECT * FROM orders;`
+    let sql = `SELECT * FROM orders ORDER BY orderId`
 	let records = await db.query(sql)
+    console.log(records)
     let orders = [] 
+    let currentId=0
     records.forEach(record => {
-        //console.log(parseFloat(record.orderTotal).toFixed(2))
-        let order = {
+        if(currentId !=record.orderId){
+            currentId=record.orderId
+            let order = {
             type: "order",
             orderId: record.orderId,
             attributes:{
@@ -18,13 +21,14 @@ export async function allOrders () {
                 timeOfOrder: record.timeOfOrder,
                 itemId: record.itemId,
                 quantity: record.quantity,
-                date: record.date
+                date: record.date,
+                numberOfPlaces: record.numberOfPlaces
+             }
 
+            }
+            orders.push (order)
         }
-
-    }
-    orders.push (order)
-})
+    })
     return orders
 }
 
@@ -34,13 +38,14 @@ export async function placeOrder (orderDetails, username) {
     let detailsOfLastOrder = await db.query(lastOrder)
     let orderId = detailsOfLastOrder[0].orderId + 1
     let date = orderDetails.attributes.date
-
+    console.log('test')
+    console.log(orderDetails.attributes.numberOfPlaces)
     for (let i = 0; i < orderDetails.attributes.items.length; i++){
         let item = orderDetails.attributes.items[i]
         let itemDetails = `SELECT * FROM menuItems WHERE itemId = ${item.itemId};`
         let detailOfItem = await db.query(itemDetails)
         let orderTotal = item.quantity * detailOfItem[0].itemPrice
-        let sql = `INSERT INTO orders (orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date) VALUES (
+        let sql = `INSERT INTO orders (orderId, orderStatus, orderTotal, tableNumber, user, timeOfOrder, itemId, quantity, date, numberOfPlaces) VALUES (
         "${orderId}",
         "Placed",
         "${orderTotal}",
@@ -49,7 +54,8 @@ export async function placeOrder (orderDetails, username) {
         "${orderDetails.attributes.time}", 
         "${item.itemId}", 
         "${item.quantity}", 
-        "${date}")`
+        "${date}",
+        ${orderDetails.attributes.numberOfPlaces})`
         //console.log (sql)
         await db.query(sql)
         
@@ -59,3 +65,44 @@ export async function placeOrder (orderDetails, username) {
 }
 
 
+//displays order details (for the homepage and for each individual page)
+export async function getOrderDetails(id) {
+    let sql = `SELECT orders.*, menuItems.* FROM orders INNER JOIN menuItems ON orders.itemId = menuItems.itemId WHERE orderId = ${id};`
+	let records = await db.query(sql)
+    console.log(records)
+    let items = []
+    records.forEach(record => {
+            let item = {
+            type: "item",
+            itemId: record.itemId,
+            attributes:{
+                itemName: record.itemName,
+                itemPrice: parseFloat(record.itemPrice).toFixed(2),
+                itemDescription: record.itemDescription,
+                category: record.category,
+                allergies: record.allergies,
+                nutritionalInfo: record.nutritionalInfo,
+                itemPhoto: record.itemPhoto,
+                quantity:record.quantity,
+                total:record.total
+             }
+            }
+            items.push(item)
+    })
+    let orderDetails = {
+            type: "orderDetails",
+            orderId: records[0].orderId,
+            attributes:{
+                orderStatus: records[0].orderStatus,
+                orderTotal: parseFloat(records[0].orderTotal).toFixed(2),
+                tableNumber: records[0].tableNumber,
+                user: records[0].user,
+                timeOfOrder: records[0].timeOfOrder,
+                date: records[0].date,
+                numberOfPlaces: records[0].numberOfPlaces,
+                items:items
+        }
+
+    }
+        return orderDetails
+}
