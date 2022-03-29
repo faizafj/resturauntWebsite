@@ -21,6 +21,7 @@
 				<li><a href="/availableTables">Add Order</a></li>
 				<li><a href="/menuItems">Menu Items</a></li>
 				<li><a href="/oneMenuItem">One Menu</a></li>
+				<li><a href="/kitchen">Kitchen </a></li>
 				<li><a href="/login">Log in</a></li>
 				<li><a href="/logout">Log out</a></li>
 			</ul>
@@ -45,15 +46,31 @@
 						<th id="homeTable"> View Order </th>
 						
 					</table>
-					<a href="/availableTables" id="addOrderbtn" class="material-icons">add_box</a>
+					<a href="/availableTables" id="addOrderbtn">Add Order </a>
+					<a href="/kitchen" id="viewKitchen">Kitchen</a>
+		</center>
+	</template>
+	<template id="kitchen">
+		<center>
+					<h2> Current Orders </h2>
+					<table> 
+						<th id="homeTable"> Table Number </th>
+						<th id="homeTable"> Order status </th>
+						<th id="homeTable"> Time Placed </th>
+						<th id="homeTable"> Number Of Places </th>
+						<th id="homeTable"> View Order </th>
+						
+					</table>
 		</center>
 	</template>
 
-
 	<template id="orderDetails">
 		<center>
-					<h2> Orders Details </h2>
+					<h2 id="orderTable">  </h2>
+					<p id="serverName">  </p>	
+					<hr id="seperator"> 						
 		</center>
+		
 	</template>
 
 	<template id="login">
@@ -101,8 +118,8 @@
 							<th> Price </th>
 						</table>
 						<h2 id="totalOrderPrice"> </h2>
-						<input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="0" max="15" > </input>
-						<button type="submit" id="submitNumberOfPlaces"> Submit </button>	
+						<p> Enter Number Of Places: </p> <input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="1" max="15" required="yes"> </input>
+						<br> 
 						<button type="submit" id="submitOrder">Place Order</button>
 						<button type="submit" id="cancelOrder"> Cancel Order </button>
 					</center>

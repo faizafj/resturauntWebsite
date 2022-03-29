@@ -56,14 +56,6 @@ async function showCurrentOrder (node){ //show current order details
 	waitStaffDetails.innerText = (waitStaff)
 	console.log(showTableNumber)
 
-
-	node.getElementById('submitNumberOfPlaces').addEventListener("click", function() {
-		let setNumberOfPlaces = document.getElementById('numberOfPlaces').value
-		localStorage.setItem('numberOfPlaces', JSON.parse(setNumberOfPlaces))
-		})
-
-
-
 	let currentOrder = JSON.parse(localStorage.getItem('items')) //get all data from local storage 
 	let total = 0 //total price set to 0
 	let orderLength = currentOrder.length
@@ -96,13 +88,21 @@ async function showCurrentOrder (node){ //show current order details
 	})
 
 	node.getElementById('submitOrder').addEventListener("click", async function(){
+		let getItems = JSON.parse(localStorage.getItem('items'))
+		let setNumberOfPlaces = document.getElementById('numberOfPlaces').value
+		if (setNumberOfPlaces == 0 ){
+			window.alert("Error please enter the number of places")
+		} 
+		if (getItems = [ ] ){
+			window.alert("Error No Order Placed")
+		} else {
+		localStorage.setItem('numberOfPlaces', JSON.parse(setNumberOfPlaces))
 		let token = localStorage.getItem('authorization')
 		let today = new Date()
 		let date = today.getDate() + ('/') +(today.getMonth()+1) + ('/') + today.getFullYear()
 		let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
 		localStorage.setItem('DateOfOrder', date )
 		localStorage.setItem('Time', time )
-		let getItems = JSON.parse(localStorage.getItem('items'))
 		console.log (getItems)
 		let getDate = localStorage.getItem('DateOfOrder')
 		let getTime = localStorage.getItem('Time')
@@ -130,8 +130,10 @@ async function showCurrentOrder (node){ //show current order details
 		const response = await fetch(url, options)
 		const json = await response.json()
 		console.log(json)
+		let array = [ ]
+		localStorage.setItem('items',JSON.stringify(array) )
 		await loadPage('home')
-	})
+	}})
 }
 
 

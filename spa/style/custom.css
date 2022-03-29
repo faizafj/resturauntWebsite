@@ -156,28 +156,58 @@ button:hover {
 	font-size: 15px; 
 }
 #addOrderbtn{
-	font-size: 75px;
+	width: 100px; 
+	font-size: 20px;
 	text-decoration: None;
-	color:  #7fb99c;
+	color: black;
+	background:  #7fb99c;
 	border: 0;
-	border-radius: 0px;
+	border-radius: 15px;
 	position:fixed; 
-	bottom: 30px;
+	bottom: 70px;
 	right: 30px;
+    padding: 15px; 
 }
 
 #addOrderbtn:hover{
-	font-size: 75px;
+	width: 100px; 
+	font-size: 20px;
 	text-decoration: None;
-	color: black;
-	border: 0;
-	background: 0; 
-	border-radius: 0px;
+	color: white;
+    padding: 15x; 
+	background: black;
+	border-radius: 15px;
 	position:fixed; 
-	bottom: 30px;
+	bottom: 70px;
 	right: 30px;
 }
 
+#viewKitchen{
+	width: 100px; 
+    padding: 15px; 
+	font-size: 20px;
+	text-decoration: None;
+	color: black;
+	background:  #7fb99c;
+	border: 0;
+	border-radius: 15px;
+	position:fixed; 
+	bottom: 0px;
+	right: 30px;
+}
+
+#viewKitchen:hover{
+    padding: 15px; 
+	width: 100px; 
+	font-size: 20px;
+	text-decoration: None;
+	color: white;
+	background: black;
+	border-radius: 15px;
+	position:fixed; 
+	bottom: 0px;
+	right: 30px;
+}
 #loginBtn{
 	color: white;
     background: black;
@@ -234,7 +264,7 @@ article{
 
 #orderDetails {
 	height: auto;
-	padding: 0px; 
+	margin: 10px; 
 	margin-left: 13em;		
 }
 #outerArticle{
@@ -293,6 +323,33 @@ tr > button:hover {
 }
 
 figure{
+	border: 0; 
+	width: 90%; 
+	margin: auto; 
+	padding: 0; 
+}
+
+
+figure > table > td {
+	border-bottom:solid 1px black; 
+	background: lightgrey; 
+	border-top:solid 1px black; 
+	text-align: left;
+	width: 200px; 
+	padding: 0; 
+	
+}
+
+figure > table {
+	border: 0; 
+	text-align: left;
+	padding-left: 50px; 
+	padding-right: 50px; 
+	margin: auto; 
+}
+
+
+#seperator{
 	border: solid 1px black; 
 }
 #home {
