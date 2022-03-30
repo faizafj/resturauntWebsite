@@ -5,7 +5,7 @@ export async function setup(node) {
 	console.log('HOME: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
+		customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
 		const token = localStorage.getItem('authorization')
 		if(token == null) loadPage('login')
 		await showAllOrders(node)

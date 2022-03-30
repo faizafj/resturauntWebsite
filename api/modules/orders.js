@@ -106,3 +106,11 @@ export async function getOrderDetails(id) {
     }
         return orderDetails
 }
+
+export async function changeOrderStatus (id, statusChange) {
+        let sql = `UPDATE orders SET orderStatus = "${statusChange}" WHERE orderId = ${id}`
+        console.log (sql)
+        console.log ("yes")
+        await db.query(sql)  
+    return true
+}

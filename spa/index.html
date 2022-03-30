@@ -52,7 +52,7 @@
 	</template>
 	<template id="kitchen">
 		<center>
-					<h2> Current Orders </h2>
+					<h2> Placed Orders </h2>
 					<table> 
 						<th id="homeTable"> Table Number </th>
 						<th id="homeTable"> Order status </th>
@@ -111,15 +111,21 @@
 				<article id="Side2">
 					<center>
 						<h3 id="tableNumberDetails">  </h3>
-						<h3 id="waitStaffDetails">  </h3>
+						<p id="waitStaffDetails">  </p>
+						<hr id="seperatorLine"> 
 						<p id="noOrders"> </p>
 						<table id="orderTable">
-							<th> Item </th>
-							<th> Price </th>
+							
 						</table>
-						<h2 id="totalOrderPrice"> </h2>
-						<p> Enter Number Of Places: </p> <input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="1" max="15" required="yes"> </input>
-						<br> 
+						<hr id="seperatorLine"> 
+						<p> Number Of Places: <input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="1" max="15" required="yes"> </input> </p> 
+						<hr id="seperatorLine"> 
+						<table id= "totalTable">
+							<tr> 						
+							<td> <h3> Total </h3> </td>	
+							<td> <p id="totalOrderPrice"> </p> </td> 
+							</tr>
+						</table>
 						<button type="submit" id="submitOrder">Place Order</button>
 						<button type="submit" id="cancelOrder"> Cancel Order </button>
 					</center>

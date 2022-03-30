@@ -6,7 +6,7 @@ export async function setup (node) {
 	console.log('menuItems: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
+		customiseNavbar(['home', 'availableTables','kitchen' , 'logout']) // navbar shown if logged in
 		if(localStorage.getItem('authorization') === null) loadPage('login')
 		const table = node.getElementById('menuItemsTable')
 		await showMenuItems(node)

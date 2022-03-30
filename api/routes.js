@@ -2,7 +2,7 @@
 import { Router } from 'https://deno.land/x/oak@v6.5.1/mod.ts'
 import { extractCredentials, saveFile } from './modules/util.js'
 import { login, register } from './modules/accounts.js'
-import { allOrders, placeOrder, getOrderDetails } from './modules/orders.js'
+import { allOrders, placeOrder, getOrderDetails, changeOrderStatus } from './modules/orders.js'
 import { allMenuItems, oneMenuItem } from './modules/menuItems.js'
 import { allAvailableTables, changeTableStatus } from './modules/availableTables.js'
 
@@ -293,6 +293,44 @@ router.get('/api/v2/orderDetails/:id', async context => {
 		, null, 2)
 	}
 })
+
+
+router.put('/api/v3/orders/:id', async context => {
+	console.log('PUT /api/v2/orders/:id')
+	const token = context.request.headers.get('Authorization')
+	console.log(`auth: ${token}`)
+	try {
+		const credentials = extractCredentials(token)
+		console.log(credentials)
+		const username = await login(credentials)
+		console.log(`username: ${username}`)
+		const data = await context.request.body ().value
+		console.log (data)
+		const orderStatusChange = await changeOrderStatus(context.params.id, data.attributes.statusChange)
+		const host = context.request.url.host
+		
+		context.response.body = JSON.stringify(
+			{
+				name: "orders",
+				description: "This API call is used to update the order status" ,
+				data: orderStatusChange
+			}, null, 2)
+	} catch(err) {
+		context.response.status = 401
+		context.response.body = JSON.stringify(
+			
+			{
+				errors: [
+					{
+						title: '401 Unauthorized.',
+						detail: err.message
+					}
+				]
+			}
+		, null, 2)
+	}
+})
+
 
 
 router.put('/api/v1/availableTables/:id', async context => {

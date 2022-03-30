@@ -5,7 +5,7 @@ export async function setup(node) {
 	console.log('HOME: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
+		customiseNavbar(['home', 'availableTables', 'kitchen' , 'logout']) // navbar shown if logged in
 		const token = localStorage.getItem('authorization')
 		if(token == null) loadPage('login')
 		await showPlacedOrders(node)
@@ -38,11 +38,27 @@ async function showPlacedOrders(node){
 			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
 			orderStatusData.innerText = order.attributes.orderStatus
 			orderTimeData.innerText = order.attributes.timeOfOrder
-			orderNumberOfPlacesData.innerText = ("Item ") + order.attributes.itemId
-			orderButton.innerText = ("View order")
+			orderNumberOfPlacesData.innerText =  order.attributes.numberOfPlaces
+			orderButton.innerText = ("Ready")
 			orderStatusData.style.background = "orange"
-			orderButton.addEventListener("click", function(){
-				window.location = '/orderDetails#'+ order.orderId	
+			let statusChange = "Ready"
+			orderButton.addEventListener("click", async function(){
+				const url = '/api/v3/orders/' + order.orderId
+				const options = {
+					method: 'PUT',
+					headers: {
+					'Content-Type': 'application/vnd.api+json',
+					'Authorization': localStorage.getItem('authorization')
+					},
+					body: JSON.stringify({
+						type: "orders",
+						attributes:{
+						statusChange: statusChange
+				}})}
+				const response = await fetch(url, options)
+				const json = await response.json()
+				console.log ("Status Changed")
+				location.reload()
 			})
 			newRow.appendChild(orderTableData)
 			newRow.appendChild(orderStatusData)
