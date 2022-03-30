@@ -36,6 +36,7 @@ async function showOrderDetails(node){
 			node.appendChild(serverNameDetails)
 		let orderDetails = json.data.attributes.items
 		console.log (orderDetails)
+		let totalOfOrder = 0
 		orderDetails.forEach(order => {
 			let figureCreate = document.createElement ("figure")
 			let tableCreate = document.createElement ("table")
@@ -43,10 +44,14 @@ async function showOrderDetails(node){
 			let itemQuantityDetails = document.createElement("td")
 			let itemPriceDetails = document.createElement("td")
 			let itemSinglePrice = document.createElement ("p")
+			let itemImage = document.createElement ("img")
+			totalOfOrder = totalOfOrder + parseInt(json.data.attributes.orderTotal)
+			itemImage.src = order.attributes.itemPhoto
 			itemNameDetails.innerText = order.attributes.itemName
 			itemSinglePrice.innerText =  "£" + order.attributes.itemPrice
 			itemQuantityDetails.innerText = ("x") + order.attributes.quantity
 			itemPriceDetails.innerText = ("£") + json.data.attributes.orderTotal
+			tableCreate.appendChild(itemImage)
 			tableCreate.appendChild(itemNameDetails)
 			itemNameDetails.appendChild(itemSinglePrice)
 			tableCreate.appendChild (itemQuantityDetails)
@@ -56,7 +61,7 @@ async function showOrderDetails(node){
         })
 		let seperatorLine = node.getElementById("seperator")
 		let overallPrice = document.createElement("h2")
-		overallPrice.innerText = "Order Total: £" +  json.data.attributes.orderTotal
+		overallPrice.innerText = "Order Total: £" +  totalOfOrder
 		let orderStatusDetails = document.createElement("h2")
 		orderStatusDetails.innerText = "Current Status: " + json.data.attributes.orderStatus
 		if (json.data.attributes.orderStatus == ("Placed")){
