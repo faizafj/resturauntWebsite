@@ -332,9 +332,8 @@ router.put('/api/v3/orders/:id', async context => {
 })
 
 
-
-router.put('/api/v1/availableTables/:id', async context => {
-	console.log('PUT /api/v1/availableTables/:id')
+router.put('/api/v3/availableTables/:id', async context => {
+	console.log('PUT /api/v3/availableTables/:id')
 	const token = context.request.headers.get('Authorization')
 	console.log(`auth: ${token}`)
 	try {
@@ -344,13 +343,13 @@ router.put('/api/v1/availableTables/:id', async context => {
 		console.log(`username: ${username}`)
 		const data = await context.request.body ().value
 		console.log (data)
-		const availableTables = await changeTableStatus(context.params.id)
+		const availableTables = await changeTableStatus(context.params.id, data.attributes.tableStatusChange)
 		const host = context.request.url.host
 		
 		context.response.body = JSON.stringify(
 			{
 				name: "availableTables",
-				description: "This API call is used to update the table status to vacant" ,
+				description: "This API call is used to update the table status to either Vacant or Available" ,
 				data: availableTables
 			}, null, 2)
 	} catch(err) {
@@ -368,6 +367,7 @@ router.put('/api/v1/availableTables/:id', async context => {
 		, null, 2)
 	}
 })
+
 
 
 router.get('/api/v1/availableTables', async context => {
