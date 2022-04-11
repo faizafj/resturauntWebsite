@@ -29,23 +29,20 @@ async function showPlacedOrders(node){
 	json.data.forEach(order =>{
 		console.log(order)
 		if (order.attributes.orderStatus == ("Placed")){
-			let newRow = document.createElement("tr")
-			let orderTableData = document.createElement("td")
-			let orderStatusData = document.createElement("td")
-			let orderTimeData = document.createElement("td")
-			let orderItemsData = document.createElement("td")
-			
-			let orderButton = document.createElement("button")			
-			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
-			orderStatusData.innerText = order.attributes.orderStatus
-			orderTimeData.innerText = order.attributes.timeOfOrder
+			let createAFigure = document.createElement("figure")
+            let createAHeader = document.createElement("header")
+            let orderTableData = document.createElement("h1")
+            let orderTimeData = document.createElement("p")
+			let orderItemsData = document.createElement("p")        
+			orderTableData.innerText = ("Table ") + order.attributes.tableNumber +  (": ") + order.attributes.orderStatus
+ 			orderTimeData.innerText = ("Time: ") +order.attributes.timeOfOrder
 			order.attributes.items.forEach(item =>{
 				let orderItem = document.createElement("p")
 				orderItem.innerText =  item.itemName + (" x") + item.quantity
 				orderItemsData.appendChild(orderItem)
 			})
+			let orderButton = document.createElement("button")  
 			orderButton.innerText = ("Ready")
-			orderStatusData.style.background = "orange"
 			let statusChange = "Ready"
 			orderButton.addEventListener("click", async function(){
 				const url = '/api/v3/orders/' + order.orderId
@@ -65,12 +62,14 @@ async function showPlacedOrders(node){
 				console.log ("Status Changed")
 				location.reload()
 			})
-			newRow.appendChild(orderTableData)
-			newRow.appendChild(orderStatusData)
-			newRow.appendChild(orderTimeData)
-			newRow.appendChild(orderItemsData)
-			newRow.appendChild(orderButton)
-        	node.querySelector("table").appendChild(newRow)
+
+			createAFigure.appendChild(createAHeader)
+			createAHeader.appendChild(orderTableData)
+			createAFigure.appendChild(orderTimeData)
+			createAFigure.appendChild(orderItemsData)
+			createAFigure.appendChild(orderButton)
+			node.getElementById("kitchenArticle").appendChild(createAFigure)
+
 		}
 	})
 }

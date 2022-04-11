@@ -28,6 +28,7 @@ async function showOrderDetails(node){
 		const json = await response.json()
 		console.log("Hello")
 		console.log (json)	
+		let orderIdNumber = json.data.orderId
 		let orderNumberData = node.getElementById("orderTable")
 			orderNumberData.innerText =  ("Table ") + json.data.attributes.tableNumber
 			node.appendChild(orderNumberData)
@@ -70,6 +71,31 @@ async function showOrderDetails(node){
 		if (json.data.attributes.orderStatus == ("Ready")){
 				orderStatusDetails.style.color = "Green"
 			}
+
+
+		let orderButton = document.createElement("button")  
+			orderButton.innerText = ("Complete Order")
+			let statusChange = "Done"
+			orderButton.addEventListener("click", async function(){
+				const url = '/api/v3/orders/' + orderIdNumber
+				const options = {
+					method: 'PUT',
+					headers: {
+					'Content-Type': 'application/vnd.api+json',
+					'Authorization': localStorage.getItem('authorization')
+					},
+					body: JSON.stringify({
+						type: "orders",
+						attributes:{
+						statusChange: statusChange
+				}})}
+				const response = await fetch(url, options)
+				const json = await response.json()
+				console.log ("Status Changed")
+				window.alert("This order Has been successfully completed")
+				location.reload()
+			})
+		node.appendChild(orderButton)
 		node.appendChild(seperatorLine)
 		node.appendChild(orderStatusDetails)
 		node.appendChild(overallPrice)		

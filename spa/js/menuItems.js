@@ -101,7 +101,7 @@ async function showCurrentOrder (node){ //show current order details
 		let token = localStorage.getItem('authorization')
 		let today = new Date()
 		let date = today.getDate() + ('/') +(today.getMonth()+1) + ('/') + today.getFullYear()
-		let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+		let time = today.getHours() + ":" + today.getMinutes()
 		localStorage.setItem('DateOfOrder', date )
 		localStorage.setItem('Time', time )
 		console.log (getItems)

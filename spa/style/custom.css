@@ -543,3 +543,106 @@ td{
 #submitQuantity, #cancelItem {
 	width:90%; 
 }
+
+
+#homeArticle{
+	margin-left: 200px;
+	display: flex; 
+	flex-wrap: wrap; 
+	height: auto; 
+	border: none; 
+	padding: 0; 
+
+
+}
+#homeArticle > figure{
+	width: 300px; 
+	margin: 30px; 
+	background: #E7F2F0; 
+	border-radius: 15px; 
+	height: fit-content; 
+	padding:0; 
+}
+
+#homeArticle > figure > header {
+	width: auto; 
+	margin: 0px; 
+	padding: 10px; 
+	border-top-left-radius: 15px; 
+	border-top-right-radius: 15px; 
+}
+
+ #homeArticle > figure > button {
+	margin: 10px; 
+	padding: 20px;
+	text-decoration: None;
+	background: #7fb99c; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 150px; 
+	height: fit-content;
+	border-radius: 15px; 
+}
+
+#homeArticle > figure > button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+#homeArticle  > figure > p {
+	margin: 10px; 
+}
+
+
+
+
+#kitchenArticle{
+	margin-left: 200px;
+	display: flex; 
+	flex-wrap: wrap; 
+	height: auto; 
+	border: none; 
+	padding: 0; 
+}
+#kitchenArticle > figure{
+	width: 300px; 
+	margin: 30px; 
+	background: #E7F2F0; 
+	border-radius: 15px; 
+	height: fit-content; 
+	padding:0; 
+}
+
+#kitchenArticle > figure > header {
+	background: orange; 
+	width: auto; 
+	margin: 0px; 
+	padding: 10px; 
+	border-top-left-radius: 15px; 
+	border-top-right-radius: 15px; 
+}
+
+ #kitchenArticle > figure > button {
+	margin: 10px; 
+	padding: 20px;
+	text-decoration: None;
+	background: #7fb99c; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 150px; 
+	height: fit-content;
+	border-radius: 15px; 
+}
+
+#kitchenArticle > figure > button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+#kitchenArticle  > figure > p {
+	margin: 10px; 
+}
