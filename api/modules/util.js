@@ -7,7 +7,7 @@ import { Md5 } from 'https://deno.land/std/hash/md5.ts'
 
 export function setHeaders(context, next) {
 	console.log('setHeaders')
-	context.response.headers.set('Content-Type', 'application/vnd.api+json')
+	//context.response.headers.set('Content-Type', 'application/vnd.api+json')
 	context.response.headers.set('charset', 'utf-8')
 	context.response.headers.set('Access-Control-Allow-Origin', '*')
 	context.response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')

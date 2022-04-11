@@ -2,7 +2,7 @@
 import { db } from './db.js'
 
 export async function allOrders () {
-    let sql = `SELECT * FROM orders ORDER BY orderId`
+    let sql = `SELECT * FROM orders INNER JOIN menuItems ON orders.itemId = menuItems.itemId ORDER BY orderId ;`
 	let records = await db.query(sql)
     console.log(records)
     let orders = [] 
@@ -19,7 +19,7 @@ export async function allOrders () {
                 tableNumber: record.tableNumber,
                 user: record.user,
                 timeOfOrder: record.timeOfOrder,
-                itemId: record.itemId,
+                items: [{'itemId':record.itemId,'itemName':record.itemName,'quantity':record.quantity}],
                 quantity: record.quantity,
                 date: record.date,
                 numberOfPlaces: record.numberOfPlaces
@@ -27,6 +27,9 @@ export async function allOrders () {
 
             }
             orders.push (order)
+        }else{
+            console.log(orders)
+            orders[orders.length-1].attributes.items.push({'itemId':record.itemId,'itemName':record.itemName,'quantity':record.quantity})
         }
     })
     return orders

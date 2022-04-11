@@ -84,6 +84,13 @@ input{
 	border: solid #7fb99c 5px;
 }
 
+#quantityInput{
+	width: 100px; 
+}
+
+#numberOfPlaces{
+	width: 100px; 
+}
 label {
 	text-align: left;
 	font-size: 20px;
@@ -193,6 +200,13 @@ button:hover {
 	position:fixed; 
 	bottom: 10px;
 	right: 30px;
+}
+
+
+#kitchen{
+	height: fit-content; 
+	margin: 10px; 
+	border: 0; 
 }
 
 #viewKitchen:hover{
@@ -418,7 +432,6 @@ figure > table > img{
 	padding: 20px;
 	height: fit-content;
 	border: none; 
-
 }
 
 #outerArticle{
@@ -471,7 +484,7 @@ figure > table > img{
 
 #Side1Item{
 	width: auto;
-	height: auto;
+	height: 700px;
 	margin: 20px; 
 	border-radius: 15px; 
 	border: 3px solid #E7F2F0;
@@ -487,6 +500,7 @@ figure > table > img{
 	background: #E7F2F0;
 	border-radius: 15px; 
 	margin: 20px; 
+	height: fit-content; 
 }
 
 #price {
@@ -522,10 +536,10 @@ td{
 	border-bottom: solid black 1px;
 }
 
-#submitOrder{
-	width:90%; 
+#submitOrder, #cancelOrder {
+	width: 75%; 
 }
 
-#cancelOrder {
+#submitQuantity, #cancelItem {
 	width:90%; 
 }

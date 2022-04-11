@@ -38,7 +38,7 @@ async function showAllOrders(node){
 			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
 			orderStatusData.innerText = order.attributes.orderStatus
 			orderTimeData.innerText = order.attributes.timeOfOrder
-			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces
+			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces + (' Places')
 			orderButton.innerText = ("View order")
 			orderStatusData.style.background = "orange"
 			orderButton.addEventListener("click", function(){
@@ -61,7 +61,7 @@ let newRow = document.createElement("tr")
 			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
 			orderStatusData.innerText = order.attributes.orderStatus
 			orderTimeData.innerText = order.attributes.timeOfOrder
-			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces
+			orderNumberOfPlacesData.innerText = order.attributes.numberOfPlaces + (' Places')
 			orderButton.innerText = ("View order")
 			orderStatusData.style.background = "green"
 			orderButton.addEventListener("click", function(){

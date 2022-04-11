@@ -33,12 +33,17 @@ async function showPlacedOrders(node){
 			let orderTableData = document.createElement("td")
 			let orderStatusData = document.createElement("td")
 			let orderTimeData = document.createElement("td")
-			let orderNumberOfPlacesData = document.createElement("td")
+			let orderItemsData = document.createElement("td")
+			
 			let orderButton = document.createElement("button")			
 			orderTableData.innerText = ("Table ") + order.attributes.tableNumber
 			orderStatusData.innerText = order.attributes.orderStatus
 			orderTimeData.innerText = order.attributes.timeOfOrder
-			orderNumberOfPlacesData.innerText =  order.attributes.numberOfPlaces
+			order.attributes.items.forEach(item =>{
+				let orderItem = document.createElement("p")
+				orderItem.innerText =  item.itemName + (" x") + item.quantity
+				orderItemsData.appendChild(orderItem)
+			})
 			orderButton.innerText = ("Ready")
 			orderStatusData.style.background = "orange"
 			let statusChange = "Ready"
@@ -63,7 +68,7 @@ async function showPlacedOrders(node){
 			newRow.appendChild(orderTableData)
 			newRow.appendChild(orderStatusData)
 			newRow.appendChild(orderTimeData)
-			newRow.appendChild(orderNumberOfPlacesData)
+			newRow.appendChild(orderItemsData)
 			newRow.appendChild(orderButton)
         	node.querySelector("table").appendChild(newRow)
 		}

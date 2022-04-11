@@ -57,7 +57,7 @@
 						<th id="homeTable"> Table Number </th>
 						<th id="homeTable"> Order status </th>
 						<th id="homeTable"> Time Placed </th>
-						<th id="homeTable"> Number Of Places </th>
+						<th id="homeTable"> Items and Quantity </th>
 						<th id="homeTable"> View Order </th>
 						
 					</table>
@@ -117,7 +117,7 @@
 						<table id="orderTable">
 							
 						</table>
-						<p> Number Of Places: <input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="1" max="15" required="yes"> </input> </p> 
+						<p> Number Of Places: <input type="number" id="numberOfPlaces" value="0" name="noOfPlaces" min="1" max="15" > </input> </p> 
 						<hr id="seperatorLine"> 
 						<table id= "totalTable">
 							<tr> 						
@@ -136,13 +136,15 @@
 					<article id="Side1Item">
 						<h2> </h2>
 						<img id="itemPhotoPlaceholder"/> 
+						<h3 id="category"> </h3>
+						<p id="description"> </p>
 					</article>
 
 					<article id="Side2Item">
-						<p> </p>
 						<p id="price"> </p>
-						<p id= "titleForQuantity"> Quantity: <input type="number" id="quantityInput" value="0" name="quantity" min="0" max="15" > </input>  </p>
-						<button type="submit" id="submitQuantity"> Submit </button>			
+						<p id= "titleForQuantity"> Quantity: <input type="number" id="quantityInput" value="0" name="quantity" min="0" > </input>  </p>
+						<button type="submit" id="submitQuantity"> Add to Order </button>
+						<button type="submit" id="cancelItem"> Cancel Item </button>			
 					</article>
 
 	</template>

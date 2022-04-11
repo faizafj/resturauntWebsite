@@ -30,8 +30,9 @@ async function showMenuItems(node){
 		console.log (json)	
 		node.querySelector('h2').innerText = json.data.attributes.itemName
 		node.getElementById('itemPhotoPlaceholder').src = json.data.attributes.itemPhoto
-		node.querySelector('p').innerText = json.data.attributes.category
-		node.getElementById('price').innerText = ("£") + json.data.attributes.itemPrice
+		node.getElementById('category').innerText = "Category: " + json.data.attributes.category
+		node.getElementById('description').innerText = json.data.attributes.itemDescription
+		node.getElementById('price').innerText = ("£") + json.data.attributes.itemPrice + (" each")
 		
 		node.getElementById('submitQuantity').addEventListener("click", function() {
 			let quantity = document.getElementById('quantityInput').value
@@ -54,6 +55,10 @@ async function showMenuItems(node){
 				currentOrder.push(item)
 			}
 			localStorage.setItem('items', JSON.stringify(currentOrder))
+			loadPage('menuItems')
+		})
+
+		node.getElementById('cancelItem').addEventListener("click", function() {
 			loadPage('menuItems')
 		})
 
