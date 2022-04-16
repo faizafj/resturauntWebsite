@@ -22,23 +22,28 @@ app.use(async (context, next) => {
 	if(context.request.url.pathname.includes("/api/") && !(context.request.url.pathname.includes("/api/accounts") && context.request.method === 'POST')) {
 		console.log('API CALL')
 		console.log(context.request.headers.get('Content-Type'))
-		context.response.headers.set('Content-Type', 'application/vnd.api+json')
-		if(context.request.headers.get('Content-Type') !== 'application/vnd.api+json') {
-			console.log('wrong Content-Type')
-			context.response.status = 415
-			context.response.body = JSON.stringify(
-				{
-					errors: [
-						{
-							title: '415 Unsupported Media Type',
-							detail: 'This API supports the JSON:API specification, Content-Type must be application/vnd.api+json'
-						}
-					]
-				}
-				, null, 2)
-			return
-		}
-		// if the authorization header is missing
+
+
+		// context.response.headers.set('Content-Type', 'application/vnd.api+json')
+		// if(context.request.headers.get('Content-Type') !== 'application/vnd.api+json') {
+		// 	console.log('wrong Content-Type')
+		// 	context.response.status = 415
+		// 	context.response.body = JSON.stringify(
+		// 		{
+		// 			errors: [
+		// 				{
+		// 					title: '415 Unsupported Media Type',
+		// 					detail: 'This API supports the JSON:API specification, Content-Type must be application/vnd.api+json'
+		// 				}
+		// 			]
+		// 		}
+		// 		, null, 2)
+		// 	return
+		// }
+		// //if the authorization header is missing
+
+
+
 		if(context.request.headers.get('Authorization') === null) {
 			console.log('missing Authorization header')
 			context.response.status = 401

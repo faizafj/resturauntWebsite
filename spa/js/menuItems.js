@@ -6,7 +6,7 @@ export async function setup (node) {
 	console.log('menuItems: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
+		customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
 		if(localStorage.getItem('authorization') === null) loadPage('login')
 		const table = node.getElementById('menuItemsTable')
 		await showMenuItems(node)
@@ -39,7 +39,7 @@ async function showMenuItems(node){ //API call to show all menu items
 		foodPrice.innerText = ("£") + menuItem.attributes.itemPrice
 		foodItemBtn.appendChild(foodPrice)
 		foodItemBtn.addEventListener("click", function(){
-			window.location = '/oneMenuItem#'+ menuItem.itemId
+			window.location = '/oneMenuItem#'+ menuItem.itemId //takes you to the food page
 		})
 		node.querySelector("#Side1").appendChild(foodItemBtn)
 
@@ -56,14 +56,6 @@ async function showCurrentOrder (node){ //show current order details
 	waitStaffDetails.innerText = (waitStaff)
 	console.log(showTableNumber)
 
-
-	node.getElementById('submitNumberOfPlaces').addEventListener("click", function() {
-		let setNumberOfPlaces = document.getElementById('numberOfPlaces').value
-		localStorage.setItem('numberOfPlaces', JSON.parse(setNumberOfPlaces))
-		})
-
-
-
 	let currentOrder = JSON.parse(localStorage.getItem('items')) //get all data from local storage 
 	let total = 0 //total price set to 0
 	let orderLength = currentOrder.length
@@ -76,18 +68,22 @@ async function showCurrentOrder (node){ //show current order details
 		total += (menuItem.price * menuItem.quantity)
 		let newRow = document.createElement("tr")
 		let itemNameData = document.createElement("td") 
+		let quantityData = document.createElement("td") 
 		let itemPriceData = document.createElement("td")
 		let tableNumberDetail = document.createElement("td") 
-		itemNameData.innerText = menuItem.itemName + (" x ") + menuItem.quantity
+		itemNameData.innerText = menuItem.itemName 
+		quantityData.innerText =  ("x") + menuItem.quantity
 		itemPriceData.innerText = ("£") + menuItem.price
+
 		newRow.appendChild(itemNameData)
+		newRow.appendChild(quantityData)		
 		newRow.appendChild(itemPriceData)
 		node.getElementById("orderTable").appendChild(newRow)
 	})}
 	
 	let totalPrice = node.getElementById('totalOrderPrice')
 	totalPrice.innerText = ("£") + total
-	node.querySelector("#Side2").appendChild(totalPrice)
+	
 
 	node.getElementById('cancelOrder').addEventListener("click", function(){
 		let array = [ ]
@@ -95,14 +91,19 @@ async function showCurrentOrder (node){ //show current order details
 		location.reload();
 	})
 
-	node.getElementById('submitOrder').addEventListener("click", async function(){
+	node.getElementById('submitOrder').addEventListener("click", async function(){ //when order is submit
+		let getItems = JSON.parse(localStorage.getItem('items'))
+		let setNumberOfPlaces = document.getElementById('numberOfPlaces').value
+		if (setNumberOfPlaces == 0 ){
+			window.alert("Error please enter the number of places")
+		}  else {
+		localStorage.setItem('numberOfPlaces', JSON.parse(setNumberOfPlaces))
 		let token = localStorage.getItem('authorization')
 		let today = new Date()
 		let date = today.getDate() + ('/') +(today.getMonth()+1) + ('/') + today.getFullYear()
-		let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+		let time = today.getHours() + ":" + today.getMinutes()
 		localStorage.setItem('DateOfOrder', date )
 		localStorage.setItem('Time', time )
-		let getItems = JSON.parse(localStorage.getItem('items'))
 		console.log (getItems)
 		let getDate = localStorage.getItem('DateOfOrder')
 		let getTime = localStorage.getItem('Time')
@@ -130,8 +131,10 @@ async function showCurrentOrder (node){ //show current order details
 		const response = await fetch(url, options)
 		const json = await response.json()
 		console.log(json)
+		let array = [ ]
+		localStorage.setItem('items',JSON.stringify(array) )
 		await loadPage('home')
-	})
+	}})
 }
 
 

@@ -39,19 +39,19 @@ a{
 a:hover {
     background: #7fb99c;
 	color: white; 
-	border-radius: 25px; 
+	border-radius: 15px; 
 }
 
 a:active {
 	text-decoration: None;
 	background: #7fb99c;
 	color: white; 
-	border-radius: 25px; 
+	border-radius: 15px; 
 }
 
 input{
 	border: black solid 1px;
-	border-radius:25px;
+	border-radius: 15px; 
 	height: 30px; 
 	font-size: 20px;
 	padding: 1px;
@@ -84,6 +84,13 @@ input{
 	border: solid #7fb99c 5px;
 }
 
+#quantityInput{
+	width: 100px; 
+}
+
+#numberOfPlaces{
+	width: 100px; 
+}
 label {
 	text-align: left;
 	font-size: 20px;
@@ -102,7 +109,7 @@ button {
 	border: none;
 	margin: 10px; 
 	width: 100px; 
-	border-radius: 25px; 
+	border-radius: 15px; 
 }
 
 button:hover {
@@ -117,7 +124,7 @@ button:hover {
 	margin: 10px; 
 	color: black;
 	background: #7fb99c;  
-	border-radius: 25px; 
+	border-radius: 15px; 
 	width: auto; 
 }
 
@@ -134,7 +141,7 @@ button:hover {
 	font-size: 2vw;
 	border: none;
 	white-space: nowrap;
-	border-radius: 25px;
+	border-radius: 15px; 
 	width: 20%;
 	padding: 30px;
 }
@@ -146,35 +153,72 @@ button:hover {
 	color: white;
 	font-size: 2vw;
 	border: none;
-	border-radius: 25px;
+	border-radius: 15px; 
 	width: 20%;
 	padding: 30px;
-
 }
 
 #availableSide > button > p{
 	font-size: 15px; 
 }
 #addOrderbtn{
-	font-size: 75px;
+	width: 100px; 
+	font-size: 20px;
 	text-decoration: None;
-	color:  #7fb99c;
+	color: black;
+	background:  #7fb99c;
 	border: 0;
-	border-radius: 0px;
+	border-radius: 15px;
 	position:fixed; 
-	bottom: 30px;
+	bottom: 70px;
 	right: 30px;
+    padding: 15px; 
 }
 
 #addOrderbtn:hover{
-	font-size: 75px;
+	width: 100px; 
+	font-size: 20px;
+	text-decoration: None;
+	color: white;
+    padding: 15x; 
+	background: black;
+	border-radius: 15px;
+	position:fixed; 
+	bottom: 70px;
+	right: 30px;
+}
+
+#viewKitchen{
+	width: 100px; 
+    padding: 15px; 
+	font-size: 20px;
 	text-decoration: None;
 	color: black;
+	background:  #7fb99c;
 	border: 0;
-	background: 0; 
-	border-radius: 0px;
+	border-radius: 15px;
 	position:fixed; 
-	bottom: 30px;
+	bottom: 10px;
+	right: 30px;
+}
+
+
+#kitchen{
+	height: fit-content; 
+	margin: 10px; 
+	border: 0; 
+}
+
+#viewKitchen:hover{
+    padding: 15px; 
+	width: 100px; 
+	font-size: 20px;
+	text-decoration: None;
+	color: white;
+	background: black;
+	border-radius: 15px;
+	position:fixed; 
+	bottom: 10px;
 	right: 30px;
 }
 
@@ -183,7 +227,7 @@ button:hover {
     background: black;
     font: 10px;
     margin-left: 10px;
-	border-radius: 10px;
+	border-radius: 15px; 
 }
 
 #signUpLink{
@@ -199,12 +243,21 @@ button:hover {
 
 
 #availableSide{
-	height:25%; 
+	height: fit-content; 
+	margin: 20px; 
+	border: 0; 
+	background: #E7F2F0;
+	border-radius: 25px;
+	
 }
 
 #vacantSide{
-	height:25%; 
+	margin: 20px; 
+	height: fit-content; 
+	border-radius: 15px; 
+	border: 3px solid #E7F2F0;
 }
+
 article{
 	margin-left: 0;
 	padding: 50px;
@@ -212,9 +265,55 @@ article{
 	border: solid black 3px; 
 }
 
+#tableNumberDetails{
+	text-align: left;
+	margin-left: 10px; 
+	text-decoration: none; 
+	font-size: 20px; 
+}
+
+#orderTable > tr > td {
+	width: 100px; 
+	border:  0; 
+}
+
+#orderTable {
+	margin: 0; 
+	border:  0; 
+	width: 100%; 
+	
+}
+
+
+#totalTable{
+	width: 100%; 
+	margin: 0; 
+	text-align: left ; 
+	border: 0; 
+}
+
+#totalTable > tr > td {
+	border: 0; 
+}
+
+
+
+
+#seperatorLine{
+	border: 1px solid #E7F2F0;
+	margin-top: 10px; 
+	margin-bottom: 10px; 
+}
+
+#waitStaffDetails{
+	text-align: left;
+	margin-left: 10px; 
+	font-size: 15px; 
+}
+
 #availableTables {
 	margin-left: 15%;
-	padding: 50px;
+	padding: 10px;
 	height: auto;
 	border: none; 
 }
@@ -226,17 +325,15 @@ article{
 	border: none; 
 }
 
-#oneMenuItem {
-	height: auto;
-	padding: 0px; 
-	margin-left: 15%;		
-}
 
 #orderDetails {
 	height: auto;
-	padding: 0px; 
-	margin-left: 13em;		
+	margin: 10px; 
+	margin-left: 13em;	
+	border-radius: 15px; 
+	border: 0;   	
 }
+
 #outerArticle{
 	padding: 10px;
 	margin-left: 15%;
@@ -245,6 +342,7 @@ article{
 	height: auto;
 	border: none;
 }
+
 #Side1{
 	width: auto;
 	height: auto;
@@ -254,10 +352,12 @@ article{
 
 #Side2{
 	width: auto;
-	height: auto;
+	height: fit-content;
 	padding: 0px; 
 	margin-left: 10px; 
-	border-radius: 20px;
+	border-radius: 15px; 
+    border: 3px solid #E7F2F0;
+
 }
 
 #totalOrderPrice{
@@ -283,7 +383,6 @@ tr > button {
 	margin: 10px; 
 	width: 100px; 
 	border-radius: 15px; 
-
 }
 
 tr > button:hover {
@@ -293,12 +392,45 @@ tr > button:hover {
 }
 
 figure{
+	width: 90%; 
+	margin: 10px; 
+	padding: 10px; 
+	background: #E7F2F0; 
+	border-radius: 15px; 
+	height: fit-content;
+}
+
+
+figure > table > td {
+	border: 0; 
+	text-align: left;
+	width: 200px; 
+	padding: 0; 
+	
+}
+
+figure > table {
+	border: none; 
+	text-align: left;
+	padding-left: 50px; 
+	padding-right: 50px; 
+	margin: auto; 
+	display: flex; 
+}
+
+figure > table > img{
+	height: 100px;
+	margin: auto; 
+	padding: inherit ;
+}
+
+#seperator{
 	border: solid 1px black; 
 }
 #home {
-	margin: 10px;
-	padding: 0px;
-	height: 100em;
+	margin: 0px;
+	padding: 20px;
+	height: fit-content;
 	border: none; 
 }
 
@@ -307,6 +439,7 @@ figure{
 	display: grid;
   	grid-template-columns: 5fr  2fr  ;
 	height: 90em;
+	
 }
 
 #Side1 > button{
@@ -340,16 +473,21 @@ figure{
 	color: black;
 }
 
-#outerArticleItem{
-	padding: 10px;
+#oneMenuItem {
+	padding: 0px; 
+	margin-left: 15%;
 	display: grid;
   	grid-template-columns: 5fr  2fr  ;
 	height: auto;
-}
+	border: 0; 
+}	
 
 #Side1Item{
 	width: auto;
-	height: auto;
+	height: 700px;
+	margin: 20px; 
+	border-radius: 15px; 
+	border: 3px solid #E7F2F0;
 }
 
 #Side2Item{
@@ -358,6 +496,11 @@ figure{
 	position: -webkit-sticky;
  	position: sticky;
   	top: 0;
+	border: 0; 
+	background: #E7F2F0;
+	border-radius: 15px; 
+	margin: 20px; 
+	height: fit-content; 
 }
 
 #price {
@@ -376,6 +519,7 @@ figure{
     text-decoration: none;
     background: #7fb99c;
 	color: black;
+	
 }
 
 table{
@@ -390,4 +534,115 @@ table{
 td{
 	padding: 10px;
 	border-bottom: solid black 1px;
+}
+
+#submitOrder, #cancelOrder {
+	width: 75%; 
+}
+
+#submitQuantity, #cancelItem {
+	width:90%; 
+}
+
+
+#homeArticle{
+	margin-left: 200px;
+	display: flex; 
+	flex-wrap: wrap; 
+	height: auto; 
+	border: none; 
+	padding: 0; 
+
+
+}
+#homeArticle > figure{
+	width: 300px; 
+	margin: 30px; 
+	background: #E7F2F0; 
+	border-radius: 15px; 
+	height: fit-content; 
+	padding:0; 
+}
+
+#homeArticle > figure > header {
+	width: auto; 
+	margin: 0px; 
+	padding: 10px; 
+	border-top-left-radius: 15px; 
+	border-top-right-radius: 15px; 
+}
+
+ #homeArticle > figure > button {
+	margin: 10px; 
+	padding: 20px;
+	text-decoration: None;
+	background: #7fb99c; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 150px; 
+	height: fit-content;
+	border-radius: 15px; 
+}
+
+#homeArticle > figure > button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+#homeArticle  > figure > p {
+	margin: 10px; 
+}
+
+
+
+
+#kitchenArticle{
+	margin-left: 200px;
+	display: flex; 
+	flex-wrap: wrap; 
+	height: auto; 
+	border: none; 
+	padding: 0; 
+}
+#kitchenArticle > figure{
+	width: 300px; 
+	margin: 30px; 
+	background: #E7F2F0; 
+	border-radius: 15px; 
+	height: fit-content; 
+	padding:0; 
+}
+
+#kitchenArticle > figure > header {
+	background: orange; 
+	width: auto; 
+	margin: 0px; 
+	padding: 10px; 
+	border-top-left-radius: 15px; 
+	border-top-right-radius: 15px; 
+}
+
+ #kitchenArticle > figure > button {
+	margin: 10px; 
+	padding: 20px;
+	text-decoration: None;
+	background: #7fb99c; 
+	color: black;
+	border: none;
+	margin: 10px; 
+	width: 150px; 
+	height: fit-content;
+	border-radius: 15px; 
+}
+
+#kitchenArticle > figure > button:hover {
+	background: black; 
+	color: white;
+	border: none; 
+}
+
+#kitchenArticle  > figure > p {
+	margin: 10px; 
 }
