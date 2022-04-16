@@ -10,7 +10,7 @@ export async function allAvailableTables () {
             type: "availableTable",
             tableNumber: record.tableNumber,
             attributes:{
-                itemName: record.itemName,
+                // itemName: record.itemName,
                 tableStatus: record.tableStatus,
                 tableSeats: record.tableSeats
 
