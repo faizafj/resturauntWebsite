@@ -22,12 +22,23 @@ router.get('/api/accounts', async context => {
 	try {
 		const credentials = extractCredentials(token)
 		console.log(credentials)
-		const username = await login(credentials)
-		console.log(`username: ${username}`)
+		const account = await login(credentials)
+		console.log(account.attributes.username)
 		context.response.body = JSON.stringify(
 			{
-				data: { username }
+				name: "account",
+				description: "This API call is used to fetch all accounts" ,
+				schema: {
+					type: "string",
+					attributes:
+					{
+					username: "username",
+					userType: "userType" 
+					}},
+				data: account
 			}, null, 2)
+			console.log ("this is accounts:")
+			console.log(account)
 	} catch(err) {
 		context.response.status = 401
 		context.response.body = JSON.stringify(
@@ -82,7 +93,6 @@ router.get('/api/v1/menuItems', async context => {
 					itemDescription: "string",
 					category: "string",
 					allergies: "string",
-					nutritionalInfo: "string",
 					itemPhoto: "string",
 					}},
 				data: menuItems
@@ -127,7 +137,6 @@ router.get('/api/v1/menuItems/:id', async context => {
 					itemDescription: "string",
 					category: "string",
 					allergies: "string",
-					nutritionalInfo: "string",
 					itemPhoto: "string",
 					}},
 				data: menuItems

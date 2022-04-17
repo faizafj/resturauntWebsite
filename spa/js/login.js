@@ -25,7 +25,8 @@ async function login() {
 	const response = await secureGet('/api/accounts', token)
 	console.log(response)
 	if(response.status === 200) {
-		localStorage.setItem('username', response.json.data.username)
+		localStorage.setItem('username', response.json.data.attributes.username)
+		localStorage.setItem('userType', response.json.data.attributes.userType)
 		localStorage.setItem('authorization', token)
 		let array = [ ]
 		localStorage.setItem('items',JSON.stringify(array) )
