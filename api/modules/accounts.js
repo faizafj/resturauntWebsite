@@ -12,11 +12,19 @@ export async function login(credentials) {
 	let sql = `SELECT count(user) AS count FROM accounts WHERE user="${user}";`
 	let records = await db.query(sql)
 	if(!records[0].count) throw new Error(`username "${user}" not found`)
-	sql = `SELECT pass FROM accounts WHERE user = "${user}";`
+	sql = `SELECT pass, userType FROM accounts WHERE user = "${user}";`
 	records = await db.query(sql)
 	const valid = await compare(pass, records[0].pass)
 	if(valid === false) throw new Error(`invalid password for account "${user}"`)
-	return user
+	let account ={
+		type: 'account',
+		attributes:{
+			username: user,
+			userType: records[0].userType
+		}
+	}
+	return account
+	console.log (account)
 }
 
 export async function register(credentials) {

@@ -45,3 +45,16 @@ export async function oneMenuItem(id) {
     }
         return menuItem
 }
+
+export async function addItems () {
+    const sql = `INSERT INTO menuItems (itemName, itemPrice, itemDescription, category, allergies, nutritionalInfo, itemPhoto ) VALUES(
+        "${itemName}", 
+        "${itemPrice}, 
+        "${itemDescription}", 
+        "${category}",
+        "${allergies}",
+        "${nutritionalInfo}", 
+        "${itemPhoto}")`
+     await db.query(sql)
+    return true
+    }

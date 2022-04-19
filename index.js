@@ -22,6 +22,8 @@ app.use(async (context, next) => {
 	if(context.request.url.pathname.includes("/api/") && !(context.request.url.pathname.includes("/api/accounts") && context.request.method === 'POST')) {
 		console.log('API CALL')
 		console.log(context.request.headers.get('Content-Type'))
+
+
 		context.response.headers.set('Content-Type', 'application/vnd.api+json')
 		if(context.request.headers.get('Content-Type') !== 'application/vnd.api+json') {
 			console.log('wrong Content-Type')
@@ -38,7 +40,10 @@ app.use(async (context, next) => {
 				, null, 2)
 			return
 		}
-		// if the authorization header is missing
+		//if the authorization header is missing
+
+
+
 		if(context.request.headers.get('Authorization') === null) {
 			console.log('missing Authorization header')
 			context.response.status = 401

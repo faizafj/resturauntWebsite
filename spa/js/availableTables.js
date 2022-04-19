@@ -3,7 +3,19 @@ import { customiseNavbar, file2DataURI, loadPage, secureGet, showMessage } from 
 export async function setup(node) {
 	console.log('availableTables: setup')
 	try {
-		customiseNavbar(['home', 'availableTables', 'logout']) // navbar shown if logged in
+		let userRole = localStorage.getItem('userType')	
+		if (userRole == 'Server'){
+			customiseNavbar(['home', 'availableTables', 'logout'])
+		} 
+		else if (userRole == 'Till'){
+			customiseNavbar(['home', 'logout'])
+		} 
+		else if (userRole == 'Kitchen'){
+			customiseNavbar(['home', 'kitchen', 'logout'])
+		} 
+		else {
+			customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		}
 		if(localStorage.getItem('authorization') === null) loadPage('login') // if there is no token in localstorage - goto Login Page
 		await showAvailableTables(node)
 	} catch(err) {
@@ -33,18 +45,24 @@ async function showAvailableTables(node){
 			node.querySelector("#availableSide").appendChild(newButton)
 			newButton.append(seatsAvailable)
 			newButton.append(tableStatusText)
+			let tableStatusChange = "Vacant"
 			newButton.addEventListener("click", async function(){
 				localStorage.setItem('tableNumber', availableTable.tableNumber)
-				const url = '/api/v1/availableTables/'+ availableTable.tableNumber
+				const url = '/api/v3/availableTables/' + availableTable.tableNumber
 				const options = {
 					method: 'PUT',
 					headers: {
 					'Content-Type': 'application/vnd.api+json',
 					'Authorization': localStorage.getItem('authorization')
-					}
-				}
+					},
+					body: JSON.stringify({
+						type: "availableTables",
+						attributes:{
+						tableStatusChange: tableStatusChange
+				}})}
 				const response = await fetch(url, options)
 				const json = await response.json()
+				console.log ("Status Changed")
 				location = "/menuItems"; 
 				});
 		}
@@ -54,18 +72,24 @@ async function showAvailableTables(node){
 			let newButton = document.createElement("button")
 			newButton.innerText = ("Table ") + availableTable.tableNumber 
 			node.querySelector("#vacantSide").appendChild(newButton)
+			let tableStatusChange = "Available"
 			newButton.addEventListener("click", async function(){
-				const url = '/api/v1/availableTables/'+ availableTable.tableNumber
+				const url = '/api/v3/availableTables/' + availableTable.tableNumber
 				const options = {
 					method: 'PUT',
 					headers: {
 					'Content-Type': 'application/vnd.api+json',
 					'Authorization': localStorage.getItem('authorization')
-					}
-				}
+					},
+					body: JSON.stringify({
+						type: "availableTables",
+						attributes:{
+						tableStatusChange: tableStatusChange
+				}})}
 				const response = await fetch(url, options)
 				const json = await response.json()
-				location = "/menuItems"; 
+				console.log ("Status Changed")
+				location.reload()
 				});
 		}
 	})

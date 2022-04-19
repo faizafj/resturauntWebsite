@@ -10,10 +10,9 @@ export async function allAvailableTables () {
             type: "availableTable",
             tableNumber: record.tableNumber,
             attributes:{
-                itemName: record.itemName,
+                // itemName: record.itemName,
                 tableStatus: record.tableStatus,
                 tableSeats: record.tableSeats
-
         }
 
     }
@@ -22,9 +21,8 @@ export async function allAvailableTables () {
     return availableTables
 }
 
-
-export async function changeTableStatus (tableNumber) {
-        let sql = `UPDATE availableTables SET tableStatus = "Vacant" WHERE tableNumber = ${tableNumber}`
+export async function changeTableStatus (tableNumber, tableStatusChange) {
+        let sql = `UPDATE availableTables SET tableStatus ="${tableStatusChange}" WHERE tableNumber = ${tableNumber}`
         console.log (sql)
         await db.query(sql)  
     return true
