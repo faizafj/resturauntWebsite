@@ -3,7 +3,19 @@ import { customiseNavbar, file2DataURI, loadPage, secureGet, showMessage } from 
 export async function setup(node) {
 	console.log('availableTables: setup')
 	try {
-		customiseNavbar(['home', 'availableTables', 'kitchen' , 'logout']) // navbar shown if logged in
+		let userRole = localStorage.getItem('userType')	
+		if (userRole == 'Server'){
+			customiseNavbar(['home', 'availableTables', 'logout'])
+		} 
+		else if (userRole == 'Till'){
+			customiseNavbar(['home', 'logout'])
+		} 
+		else if (userRole == 'Kitchen'){
+			customiseNavbar(['home', 'kitchen', 'logout'])
+		} 
+		else {
+			customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		}
 		if(localStorage.getItem('authorization') === null) loadPage('login') // if there is no token in localstorage - goto Login Page
 		await showAvailableTables(node)
 	} catch(err) {

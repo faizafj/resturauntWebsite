@@ -37,7 +37,6 @@ router.get('/api/accounts', async context => {
 					}},
 				data: account
 			}, null, 2)
-			console.log ("this is accounts:")
 			console.log(account)
 	} catch(err) {
 		context.response.status = 401
@@ -213,7 +212,7 @@ router.get('/api/v1/orders', async context => {
 
 
 
-
+//Place an Order
 router.post('/api/v1/orders', async context => {
 	console.log('POST /api/v1/orders')
 	const token = context.request.headers.get('Authorization')
@@ -221,8 +220,8 @@ router.post('/api/v1/orders', async context => {
 	try {
 		const credentials = extractCredentials(token)
 		console.log(credentials)
-		const username = await login(credentials)
-		console.log(`username: ${username}`)
+		const getUsername = await login(credentials)
+        const username = getUsername.attributes.username
 		const data = await context.request.body ().value
 		console.log (data)
 		const orders = await placeOrder(data,username)

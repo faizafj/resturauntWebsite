@@ -5,10 +5,29 @@ export async function setup(node) {
 	console.log('HOME: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'kitchen' , 'logout']) // navbar shown if logged in
+		let userRole = localStorage.getItem('userType')	
+		if (userRole == 'Server'){
+			customiseNavbar(['home', 'availableTables', 'logout'])
+		} 
+		else if (userRole == 'Till'){
+			customiseNavbar(['home', 'logout'])
+		} 
+		else if (userRole == 'Kitchen'){
+			customiseNavbar(['kitchen', 'logout'])
+		} 
+		else {
+			customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		}
 		const token = localStorage.getItem('authorization')
+		console.log (userRole)	
 		if(token == null) loadPage('login')
-		await showPlacedOrders(node)
+		if (userRole == "Admin" || userRole == "Kitchen"){
+			await showPlacedOrders(node)
+		} else {
+			window.alert ("Unathorised Access")
+			loadPage('home')
+		}
+
 	} catch(err) {
 		console.error(err)
 	}

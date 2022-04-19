@@ -6,7 +6,19 @@ export async function setup (node) {
 	console.log('orderDetails: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		let userRole = localStorage.getItem('userType')	
+		if (userRole == 'Server'){
+			customiseNavbar(['home', 'availableTables', 'logout'])
+		} 
+		else if (userRole == 'Till'){
+			customiseNavbar(['home', 'logout'])
+		} 
+		else if (userRole == 'Kitchen'){
+			customiseNavbar(['home', 'kitchen', 'logout'])
+		} 
+		else {
+			customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		}
 		if(localStorage.getItem('authorization') === null) loadPage('login')
 		await showOrderDetails(node)
 	} catch(err) {
@@ -15,6 +27,7 @@ export async function setup (node) {
 	
 }
 async function showOrderDetails(node){
+	let userRole = localStorage.getItem('userType')	
 	const id = window.location.hash.substring(1);
 	const url = '/api/v2/orderDetails/'+id
 	const options = {
@@ -61,9 +74,11 @@ async function showOrderDetails(node){
 			node.appendChild(figureCreate)
         })
 		let seperatorLine = node.getElementById("seperator")
-		let overallPrice = document.createElement("h2")
+		let overallPrice = document.createElement("h3")
 		overallPrice.innerText = "Order Total: £" +  totalOfOrder
-		let orderStatusDetails = document.createElement("h2")
+		let orderTimeAndDateData = document.createElement("h3")
+		orderTimeAndDateData.innerText = " Date/Time: " + json.data.attributes.date + " - "  + json.data.attributes.timeOfOrder
+		let orderStatusDetails = document.createElement("h3")
 		orderStatusDetails.innerText = "Current Status: " + json.data.attributes.orderStatus
 		if (json.data.attributes.orderStatus == ("Placed")){
 				orderStatusDetails.style.color = "orange"
@@ -95,8 +110,44 @@ async function showOrderDetails(node){
 				window.alert("This order Has been successfully completed")
 				location.reload()
 			})
-		node.appendChild(orderButton)
+
+			if (json.data.attributes.orderStatus == ("Done")){
+				orderStatusDetails.style.color = "Green"
+				let orderButtonPaid = document.createElement("button")  
+				orderButtonPaid.innerText = ("Order Paid")
+				let statusChange = "Paid"
+				orderButtonPaid.addEventListener("click", async function(){
+				const url = '/api/v3/orders/' + orderIdNumber
+				const options = {
+					method: 'PUT',
+					headers: {
+					'Content-Type': 'application/vnd.api+json',
+					'Authorization': localStorage.getItem('authorization')
+					},
+					body: JSON.stringify({
+						type: "orders",
+						attributes:{
+						statusChange: statusChange
+				}})}
+				const response = await fetch(url, options)
+				const json = await response.json()
+				console.log ("Status Changed")
+				window.alert("This order has been PAID")
+				// location.reload()
+			})
+					node.appendChild(orderButtonPaid)
+			} else if (json.data.attributes.orderStatus == ("Paid")){
+					let itemPaid = document.createElement("H1")
+					itemPaid.innerText = "This order has been PAID and is complete."
+					itemPaid.style.textAlign = "center"
+					itemPaid.style.color = "Red"
+					node.appendChild(itemPaid)
+			}
+			else {
+						node.appendChild(orderButton)
+			}
 		node.appendChild(seperatorLine)
+		node.appendChild (orderTimeAndDateData)
 		node.appendChild(orderStatusDetails)
 		node.appendChild(overallPrice)		
 

@@ -6,7 +6,19 @@ export async function setup (node) {
 	console.log('menuItems: setup')
 	try {
 		console.log(node)
-		customiseNavbar(['home', 'availableTables','kitchen' , 'logout']) // navbar shown if logged in
+		let userRole = localStorage.getItem('userType')	
+		if (userRole == 'Server'){
+			customiseNavbar(['home', 'availableTables', 'logout'])
+		} 
+		else if (userRole == 'Till'){
+			customiseNavbar(['home', 'logout'])
+		} 
+		else if (userRole == 'Kitchen'){
+			customiseNavbar(['home', 'kitchen', 'logout'])
+		} 
+		else {
+			customiseNavbar(['home', 'availableTables', 'kitchen' ,'logout']) // navbar shown if logged in
+		}
 		if(localStorage.getItem('authorization') === null) loadPage('login')
 		const table = node.getElementById('menuItemsTable')
 		await showMenuItems(node)

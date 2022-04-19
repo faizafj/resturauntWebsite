@@ -13,7 +13,6 @@ export async function allAvailableTables () {
                 // itemName: record.itemName,
                 tableStatus: record.tableStatus,
                 tableSeats: record.tableSeats
-
         }
 
     }
@@ -21,7 +20,6 @@ export async function allAvailableTables () {
 })
     return availableTables
 }
-
 
 export async function changeTableStatus (tableNumber, tableStatusChange) {
         let sql = `UPDATE availableTables SET tableStatus ="${tableStatusChange}" WHERE tableNumber = ${tableNumber}`
