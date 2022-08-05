@@ -1,11 +1,8 @@
-This template is to be used when developing a Single Page Application connected to a REST Web API.This
-
-There are two directories:
+There are two directories within this project:
 
 1. The **api** directory contains the code for the REST Web API.
 2. The **spa** directory contains the front-end code.
 
-Project settings: make sure **protect dynamic ports** is switched off.
 
 # Getting Started
 
@@ -27,46 +24,43 @@ $ deno run --allow-all --unstable index.js
 
 
 
-# Testing
-You are required to create the following accounts to allow the system to be tested. All accounts should have the password p455w0rd:
-1. waitress (a member of serving staff).
-2. waiter (a second member of serving staff).
-3. chef
-Each of the serving staff should have placed at least one order and the chef should have flagged at least one order as served.
-
-
 # Feature 1
-The system should only be accessible and viewable by registered users. All non-logged in users to be directed to the login screen.
-1. The homepage should display an Add Order link or button.
-2. This should take staff to a table select screen with a large button for each table (assume 10 tables labelled 1-10). //needs to set the status to vacant after
-3. Clicking on a table button takes the staff member to the food select screen. This has big buttons, one per menu item.
-4. Clicking on a button adds the item to the order and returns the member of staff to the same food screen.
-5. As items are selected, the order (list of items) should be updated on the same screen. each item in the list should include the name of the ordered item and the quantity.
-In addition to the data captured through the forms, the database should also store:
+The system is accessible and viewable only by registered users. All non-logged in users are directed to the login page.
+1. The homepage displays an Add Order button, which takes the user to a table select page, with a large button for each table, when when a table is selected, the the status of it is set to vacant after
+3. Clicking on a table button takes the staff member to the menu page. 
+4. Clicking on a menu button adds the item to the order and returns the member of staff to the same food screen.
+5. As items are selected, the order is shown and updated on the same screen, where details on the quantity, name and price are shown. 
+
+In addition to the data captured through the forms, the database also stores:
 1. The username of the member of staff logged in.
-2. The date and time the order was placed (the Done button was clicked).
-3. The order status should be set to placed.
-To demonstrate this feature and to prove that the form works correctly you will need to show that the data is being persisted correctly, either by running a database query or an API call depending on the platform and technology you are using.
- 
+2. The date and time the order was placed (which is taken from the moment the Done button was clicked).
+3. The order status which is set to placed.
+
 # Feature 2
-The home screen should list all the active orders (those that have a status of placed or ready).
-For each order the following needs to be displayed:
+The homepage lists all the active orders which have a status of placed or ready.
+For each order the following information is displayed:
 1. Table number.
 2. Number of places (the number of meals ordered).
-3. Time of order (but not the date)
-4. Status (see above)
-
+3. Time of order
+4. The Status 
 
 # Feature 3
-The Homepage should also have a Kitchen button or link. This displays summaries of all the orders with a status of placed. The summary should include:
-1. Time the order was placed (oldest at the top).
-2. List of items ordered with quantities. Each item in the list should include the name of the item and the quantity.
-3. A Ready button that sets the order status to ready (and removes it from this screen).
+The Homepage also displays a Kitchen button which when clicked on displays summaries of all the orders with a status of placed. This page includes the following information:
+1. The time the order was placed.
+2. A list of items ordered with quantities.
+3. A Ready button that sets the order status to ready (and removes it from this page when clicked on).
 
 # Feature 4
-This feature requires you to make changes to the functionality:
-1. You need to assign staff as either welcome, servers, kitchen or till.
-2. Each use can only see orders with a particular status.
-3. The workflow should handle every step from the customer's arrival to payment and departure.
-4. The welcome staff assign tables but are prevented from assigning to an occupied table.
+This feature required changes to the functionality:
+1. The users where changed so that the staff were asigned as either welcome, servers, kitchen or till, in order to add user access roles, meaning each user can only see orders with a particular status. For example, The welcome staff can assign tables but are prevented from assigning to an occupied table with a status of vacant.
+
+
+
+##Technologies used:
+- Javascript
+- CSS
+- HTML
+- DENO
+- Mysql
+- DBDatabase
 
