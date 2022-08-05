@@ -56,7 +56,7 @@ This feature required changes to the functionality:
 
 
 
-##Technologies used:
+## Technologies used:
 - Javascript
 - CSS
 - HTML
